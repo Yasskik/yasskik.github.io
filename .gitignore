@@ -1,0 +1,8 @@
+# source photos (the optimized WebP versions in assets/img are what the site serves)
+src/
+__pycache__/
+.venv/
+.DS_Store
+
+# full-page review captures (large) stay local
+previews/*-full.png
