@@ -19,7 +19,8 @@
   --up: #1E8449;
   --down: #C0392B;
 
-  --serif: "Bodoni Moda", "Playfair Display", Didot, "Bodoni 72", "Times New Roman", serif;
+  --display: "Playfair Display", Georgia, "Times New Roman", serif;   /* Latin display face, both pages */
+  --serif: var(--display);
   --sans: "Manrope", "Helvetica Neue", Arial, system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -30,7 +31,7 @@
   --brushed-light: url("../img/brushed-silver.webp");
 }
 .lang-ar {
-  --serif: "Amiri", "Bodoni Moda", serif;
+  --serif: "Noto Naskh Arabic", "Playfair Display", serif;
   --sans: "IBM Plex Sans Arabic", "Manrope", Tahoma, sans-serif;
 }
 
@@ -41,6 +42,7 @@ html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--mast-h) + 
 body {
   margin: 0; background: var(--pearl); color: var(--ink);
   font: 400 16px/1.6 var(--sans); font-feature-settings: "ss01", "cv11";
+  font-variant-numeric: lining-nums;
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   overflow-x: clip;
 }
@@ -110,9 +112,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .mast.is-scrolled { border-bottom-color: var(--hair); background: rgba(241, 240, 236, .9); }
 .mast__mono { display: inline-flex; align-items: center; gap: 14px; justify-self: start; }
-.mast__mono svg { width: 38px; height: 38px; color: var(--ink); }
+.mast__mono img { width: 44px; height: 44px; flex: 0 0 auto; box-shadow: 0 1px 2px rgba(17,18,20,.18), 0 6px 14px -8px rgba(17,18,20,.35); }
 .mast__name { font: 500 12px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; }
-.lang-ar .mast__name { letter-spacing: .12em; }
+.lang-ar .mast__name { letter-spacing: 0; font-size: 14px; }
 .mast__nav ol { display: flex; gap: clamp(14px, 2vw, 34px); }
 .mast__nav a { display: inline-flex; align-items: baseline; gap: 6px; font: 500 13px/1 var(--sans); position: relative; padding: 8px 0; color: var(--graphite); }
 .lang-ar .mast__nav a { font-size: 15px; }
@@ -123,7 +125,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .mast__drawer-foot { display: none; }
 .mast__right { justify-self: end; display: flex; align-items: center; gap: 22px; }
 .mast__lang { font: 600 13px/1 var(--sans); padding: 8px 2px; border-bottom: 1px solid var(--hair); }
-.mast__lang:lang(ar) { font-family: "Amiri", serif; font-size: 17px; font-weight: 700; }
+.mast__lang:lang(ar) { font-family: "Noto Naskh Arabic", serif; font-size: 16px; font-weight: 600; }
 .mast__cv { display: inline-flex; gap: 8px; align-items: center; height: 38px; padding: 0 16px; border: 1px solid var(--ink); font: 600 11px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; transition: background-color .3s, color .3s; }
 .lang-ar .mast__cv { letter-spacing: 0; font-size: 13px; }
 .mast__cv:hover { background: var(--ink); color: var(--pearl); }
@@ -158,29 +160,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero__name {
   position: absolute; z-index: 2; white-space: nowrap; pointer-events: none; text-align: center;
-  font-family: var(--serif); line-height: .78; letter-spacing: -.035em;
+  font-family: var(--display); line-height: .8; letter-spacing: -.02em; direction: ltr;
   inset-inline: -120cqw;
 }
 .hero__name--back {
-  top: 13.2cqh; font-size: 63cqw; font-weight: 500;
+  top: 13.2cqh; font-size: 56cqw; font-weight: 600;
   color: var(--graphite);
   background: var(--brushed-dark) var(--sheen, 50%) 50% / 140% 100%;
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero__name--front {
-  z-index: 4; bottom: 9cqh; font-size: 46cqw; font-style: italic; font-weight: 400; letter-spacing: -.02em;
-  color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 1.4px var(--ink);
-  text-indent: 38cqw;
+  z-index: 4; bottom: 9cqh; font-size: 40cqw; font-style: italic; font-weight: 500; letter-spacing: -.01em;
+  color: transparent; -webkit-text-fill-color: transparent; -webkit-text-stroke: 2.2px var(--ink);
+  text-indent: 30cqw;
+}
+.lang-ar .hero__name--front { text-indent: 0;
 }
 .hero__fig {
   position: absolute; z-index: 5; right: -32px; top: 50%; writing-mode: vertical-rl; font: 500 10px/1 var(--mono); letter-spacing: .08em; color: var(--steel-d); text-transform: uppercase;
 }
 .lang-ar .hero__fig { font-family: var(--sans); font-size: 12px; letter-spacing: 0; right: auto; left: -32px; }
 
-/* Arabic display name (Amiri) needs its own metrics */
-.lang-ar .hero__name { letter-spacing: 0; line-height: 1.1; font-family: "Amiri", serif; font-weight: 700; }
-.lang-ar .hero__name--back { top: -4cqh; font-size: 82cqw; }
-.lang-ar .hero__name--front { bottom: 1cqh; font-size: 48cqw; font-style: normal; text-indent: 0; -webkit-text-fill-color: var(--paper); -webkit-text-stroke: 1px var(--ink); inset-inline: auto; left: -150cqw; right: -90cqw; }
 
 /* side columns */
 .hero__col { position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: space-between; padding: clamp(28px, 4vh, 48px) 0 clamp(36px, 6vh, 64px); min-width: 0; }
@@ -189,20 +189,20 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero__intro { margin-top: auto; margin-bottom: clamp(24px, 5vh, 56px); max-width: 360px; }
 .hero__kicker { font: 600 11px/1.5 var(--sans); letter-spacing: .24em; text-transform: uppercase; color: var(--steel-d); margin-bottom: 18px; }
 .lang-ar .hero__kicker { letter-spacing: 0; font-size: 14px; }
-.hero__role { font: italic 400 clamp(26px, 2.3vw, 38px)/1.08 var(--serif); letter-spacing: -.01em; margin-bottom: 18px; }
-.lang-ar .hero__role { font-style: normal; font-weight: 700; line-height: 1.35; font-size: clamp(24px, 2vw, 32px); }
+.hero__role { font: italic 500 clamp(26px, 2.3vw, 38px)/1.08 var(--serif); letter-spacing: -.01em; margin-bottom: 18px; }
+.lang-ar .hero__role { font-style: normal; font-weight: 600; line-height: 1.55; font-size: clamp(22px, 1.8vw, 28px); }
 .hero__lede { font-size: 15px; line-height: 1.65; color: var(--graphite); }
 .hero__facts { display: grid; gap: 0; border-top: 1px solid var(--hair); max-width: 360px; }
 .hero__facts div { display: grid; grid-template-columns: 84px 1fr; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--hair); font-size: 13.5px; }
 .hero__facts dt { font: 600 10.5px/1.9 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--steel); }
 .lang-ar .hero__facts dt { letter-spacing: 0; font-size: 13px; line-height: 1.6; }
-.hero__issue-title { font: italic 400 clamp(20px, 1.6vw, 26px)/1.1 var(--serif); }
-.lang-ar .hero__issue-title { font-style: normal; font-weight: 700; }
+.hero__issue-title { font: italic 500 clamp(20px, 1.6vw, 26px)/1.1 var(--serif); }
+.lang-ar .hero__issue-title { font-style: normal; font-weight: 600; }
 .hero__contents { margin-top: auto; margin-bottom: clamp(24px, 5vh, 52px); width: min(100%, 340px); }
 .hero__contents .label { padding-bottom: 12px; border-bottom: 1px solid var(--ink); }
 .hero__contents li a { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--hair); font-size: 14px; line-height: 1.4; text-align: start; transition: padding .4s var(--ease); }
 .hero__contents li a:hover { padding-inline-start: 8px; }
-.hero__contents .num { order: 2; font: italic 400 22px/1 var(--serif); color: var(--steel-d); }
+.hero__contents .num { order: 2; font: italic 500 22px/1 var(--serif); color: var(--steel-d); }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
 
 .hero__rail { position: absolute; top: 0; bottom: 0; z-index: 3; display: flex; align-items: center; pointer-events: none; }
@@ -253,14 +253,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .sec-head { position: relative; margin-bottom: clamp(48px, 6vw, 96px); max-width: 1280px; }
 .sec-head__ghost {
   position: absolute; z-index: 0; top: -.5em; inset-inline-start: -.06em; pointer-events: none; user-select: none;
-  font: 400 clamp(110px, 19vw, 330px)/1 "Bodoni Moda", serif; letter-spacing: -.04em; white-space: nowrap;
-  color: transparent; -webkit-text-stroke: 1px rgba(17, 18, 20, .13);
+  font: 500 clamp(110px, 18vw, 310px)/1 var(--display); letter-spacing: -.02em; white-space: nowrap; direction: ltr;
+  color: transparent; -webkit-text-stroke: 1.2px rgba(17, 18, 20, .17);
 }
 .sec-head__meta { position: relative; display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
-.sec-head__no { font: italic 400 20px/1 var(--serif); }
-.sec-head__title { position: relative; font: 400 clamp(44px, 6.6vw, 112px)/.94 var(--serif); letter-spacing: -.03em; max-width: 14ch; }
+.sec-head__no { font: italic 500 20px/1 var(--serif); }
+.sec-head__title { position: relative; font: 500 clamp(44px, 6.2vw, 104px)/1 var(--serif); letter-spacing: -.02em; max-width: 14ch; }
 .sec-head__title em { font-style: italic; color: var(--steel-d); }
-.lang-ar .sec-head__title { font-weight: 700; line-height: 1.2; letter-spacing: 0; max-width: 18ch; }
+.lang-ar .sec-head__title { font-weight: 600; line-height: 1.45; letter-spacing: 0; max-width: 18ch; font-size: clamp(38px, 4.8vw, 76px); }
 .lang-ar .sec-head__title em { font-style: normal; }
 .sec-intro { max-width: 620px; font-size: clamp(16px, 1.3vw, 19px); line-height: 1.65; color: var(--graphite); margin: calc(clamp(48px, 6vw, 96px) * -.5) 0 clamp(48px, 6vw, 80px); }
 
@@ -287,7 +287,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .about__lead { font: 400 clamp(24px, 2.35vw, 38px)/1.22 var(--serif); letter-spacing: -.012em; margin-bottom: 32px; }
 .about__lead::first-letter { float: left; font-size: 4.3em; line-height: .78; padding: .06em .08em 0 0; font-weight: 500;
   background: var(--brushed-dark) center / cover; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.lang-ar .about__lead { line-height: 1.6; font-size: clamp(22px, 2vw, 32px); }
+.lang-ar .about__lead { line-height: 1.75; font-size: clamp(21px, 1.8vw, 28px); font-weight: 500; }
 .lang-ar .about__lead::first-letter { all: unset; }
 .about__body { font-size: 16.5px; line-height: 1.75; color: var(--graphite); max-width: 62ch; }
 .about__facts { border-top: 1px solid var(--ink); }
@@ -303,9 +303,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   padding: clamp(28px, 3.2vw, 48px) 0; border-bottom: 1px solid var(--hair); transition: background-color .5s;
 }
 .exp__item:hover { background: rgba(255, 255, 255, .38); }
-.exp__num { font: italic 400 64px/.8 "Bodoni Moda", serif; color: transparent; -webkit-text-stroke: 1px var(--graphite); }
-.exp__org { font: 400 clamp(24px, 2.2vw, 34px)/1.1 var(--serif); letter-spacing: -.012em; margin-bottom: 10px; }
-.lang-ar .exp__org { font-weight: 700; line-height: 1.4; }
+.exp__num { font: italic 500 60px/.8 var(--display); color: transparent; -webkit-text-stroke: 1.3px var(--graphite); }
+.exp__org { font: 500 clamp(24px, 2.2vw, 34px)/1.1 var(--serif); letter-spacing: -.012em; margin-bottom: 10px; }
+.lang-ar .exp__org { font-weight: 600; line-height: 1.4; }
 .exp__role { font: 600 11px/1.6 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--steel-d); }
 .lang-ar .exp__role { letter-spacing: 0; font-size: 14px; }
 .exp__bullets li { position: relative; padding-inline-start: 26px; font-size: 15.5px; line-height: 1.65; color: var(--graphite); }
@@ -326,9 +326,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .app__index { position: absolute; top: 14px; inset-inline-start: 14px; font: 500 11px/1 var(--mono); background: var(--ink); color: var(--pearl); padding: 7px 9px; letter-spacing: .06em; }
 .app__body { display: flex; flex-direction: column; gap: 14px; padding: clamp(22px, 2.4vw, 36px); flex: 1; }
 .app--feature .app__body { justify-content: center; padding: clamp(28px, 3.6vw, 60px); }
-.app__title { font: 400 clamp(26px, 2.3vw, 36px)/1.05 var(--serif); letter-spacing: -.015em; }
+.app__title { font: 500 clamp(26px, 2.3vw, 36px)/1.05 var(--serif); letter-spacing: -.015em; }
 .app--feature .app__title { font-size: clamp(34px, 3.6vw, 58px); }
-.lang-ar .app__title { font-weight: 700; line-height: 1.3; }
+.lang-ar .app__title { font-weight: 600; line-height: 1.3; }
 .app__text { font-size: 15px; line-height: 1.65; color: var(--graphite); }
 .app__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 10px; }
 .work__extra { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(18px, 2vw, 28px); margin-top: clamp(18px, 2vw, 28px); }
@@ -340,8 +340,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .extra .link-arrow { align-self: flex-start; font-size: 14px; }
 .extra--memo { background: var(--ink); color: var(--platinum); border-color: var(--ink); }
 .extra--memo .label { color: var(--silver); }
-.extra__title { font: italic 400 clamp(28px, 2.6vw, 42px)/1.05 var(--serif); color: #fff; }
-.lang-ar .extra__title { font-style: normal; font-weight: 700; line-height: 1.3; }
+.extra__title { font: italic 500 clamp(28px, 2.6vw, 42px)/1.05 var(--serif); color: #fff; }
+.lang-ar .extra__title { font-style: normal; font-weight: 600; line-height: 1.3; }
 .extra--memo p:last-child { font-size: 15px; line-height: 1.65; color: var(--silver); margin-top: auto; }
 
 /* ---------- systems ---------- */
@@ -349,7 +349,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .sys + .sys { border-top: 1px solid var(--hair); }
 .sys--flip .sys__phones { order: 2; }
 .sys__phones { position: relative; height: clamp(460px, 44vw, 660px); }
-.sys__big { position: absolute; z-index: 0; inset-inline-start: -2%; top: 50%; translate: 0 -55%; font: italic 400 clamp(200px, 26vw, 420px)/1 "Bodoni Moda", serif; color: transparent; -webkit-text-stroke: 1px rgba(17,18,20,.16); pointer-events: none; }
+.sys__big { position: absolute; z-index: 0; inset-inline-start: -2%; top: 50%; translate: 0 -55%; font: italic 500 clamp(200px, 26vw, 420px)/1 var(--display); color: transparent; -webkit-text-stroke: 1.3px rgba(17,18,20,.17); pointer-events: none; }
 .phone {
   position: absolute; z-index: 1; width: clamp(190px, 17vw, 270px); aspect-ratio: 600 / 1298; overflow: hidden;
   border-radius: clamp(26px, 2.4vw, 38px); border: clamp(6px, .55vw, 9px) solid var(--graphite); background: var(--graphite);
@@ -363,8 +363,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .sys__phones:hover .phone img { filter: none; }
 }
 .sys__text { max-width: 560px; }
-.sys__name { font: 400 clamp(40px, 4.6vw, 76px)/.98 var(--serif); letter-spacing: -.025em; margin: 14px 0 22px; }
-.lang-ar .sys__name { font-weight: 700; line-height: 1.25; }
+.sys__name { font: 500 clamp(40px, 4.6vw, 76px)/.98 var(--serif); letter-spacing: -.025em; margin: 14px 0 22px; }
+.lang-ar .sys__name { font-weight: 600; line-height: 1.4; font-size: clamp(36px, 3.8vw, 60px); }
 .sys__desc { font-size: 16.5px; line-height: 1.7; color: var(--graphite); margin-bottom: 26px; }
 .sys__points { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); margin-bottom: 22px; }
 .sys__points li { padding: 13px 0; border-bottom: 1px solid var(--hair); font-size: 14.5px; font-weight: 500; }
@@ -376,8 +376,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .more { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: baseline; margin-top: clamp(40px, 5vw, 72px); padding-top: 26px; border-top: 1px solid var(--ink); }
 .more ul { display: flex; flex-wrap: wrap; gap: 12px 48px; }
 .more li { display: flex; gap: 12px; align-items: baseline; font-size: 14.5px; color: var(--graphite); }
-.more strong { font: italic 400 22px/1.2 var(--serif); color: var(--ink); }
-.lang-ar .more strong { font-style: normal; font-weight: 700; }
+.more strong { font: italic 500 22px/1.2 var(--serif); color: var(--ink); }
+.lang-ar .more strong { font-style: normal; font-weight: 600; }
 
 /* ---------- skills ---------- */
 .skills__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--hair); }
@@ -385,28 +385,28 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .skill + .skill { border-inline-start: 1px solid var(--hair); }
 .skill:first-child { padding-inline-start: 0; }
 .skill__no { font-size: 11px; color: var(--steel); margin-bottom: 40px; }
-.skill__title { font: italic 400 clamp(24px, 2vw, 32px)/1.1 var(--serif); margin-bottom: 22px; min-height: 2.2em; }
-.lang-ar .skill__title { font-style: normal; font-weight: 700; line-height: 1.4; }
+.skill__title { font: italic 500 clamp(24px, 2vw, 32px)/1.1 var(--serif); margin-bottom: 22px; min-height: 2.2em; }
+.lang-ar .skill__title { font-style: normal; font-weight: 600; line-height: 1.4; }
 .skill li { padding: 11px 0; border-top: 1px solid var(--hair-2); font-size: 14.5px; line-height: 1.45; }
 
 /* ---------- education & languages ---------- */
 .edu .sec-head__title { max-width: none; }
 .edu__grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(32px, 5vw, 90px); align-items: end; margin-bottom: clamp(64px, 8vw, 120px); }
-.edu__degree { font: 400 clamp(26px, 2.6vw, 42px)/1.15 var(--serif); letter-spacing: -.01em; margin-bottom: 14px; }
-.lang-ar .edu__degree { font-weight: 700; line-height: 1.4; }
+.edu__degree { font: 500 clamp(26px, 2.6vw, 42px)/1.15 var(--serif); letter-spacing: -.01em; margin-bottom: 14px; }
+.lang-ar .edu__degree { font-weight: 600; line-height: 1.4; }
 .edu__meta { display: flex; gap: 22px; font-size: 14px; color: var(--steel-d); margin-bottom: 38px; }
 .edu__meta span + span::before { content: "·"; margin-inline-end: 22px; }
 .edu__main .label { margin-bottom: 16px; }
 .edu__year { display: flex; flex-direction: column; align-items: flex-end; text-align: end; }
 .edu__year-num {
-  font: 500 clamp(120px, 17vw, 300px)/.8 "Bodoni Moda", serif; letter-spacing: -.05em;
+  font: 700 clamp(120px, 16vw, 280px)/.85 var(--display); letter-spacing: -.03em;
   background: var(--brushed-dark) var(--sheen, 50%) 50% / 160% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   margin-bottom: 16px;
 }
 .langs > .label { padding-bottom: 14px; border-bottom: 1px solid var(--ink); }
 .lang { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .8fr) minmax(0, 2fr) 120px; gap: 24px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--hair); }
-.lang__script { font: 400 clamp(36px, 4.4vw, 68px)/1 "Bodoni Moda", "Playfair Display", serif; letter-spacing: -.02em; }
-.lang__script:lang(ar) { font-family: "Amiri", serif; font-weight: 700; letter-spacing: 0; line-height: 1.2; }
+.lang__script { font: 400 clamp(36px, 4.4vw, 68px)/1 var(--display); letter-spacing: -.02em; }
+.lang__script:lang(ar) { font-family: "Noto Naskh Arabic", serif; font-weight: 600; letter-spacing: 0; line-height: 1.3; }
 .lang__name { font-size: 14px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--steel-d); }
 .lang-ar .lang__name { letter-spacing: 0; font-size: 15px; }
 .lang__meter { position: relative; height: 1px; background: var(--hair); }
@@ -419,9 +419,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .contact { background: var(--pearl-2); }
 .contact .sec-head__title { font-size: clamp(64px, 11vw, 190px); }
 .contact__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(36px, 5vw, 96px); align-items: end; }
-.contact__text { font: italic 400 clamp(22px, 2vw, 30px)/1.3 var(--serif); max-width: 30ch; margin-bottom: 34px; }
+.contact__text { font: italic 500 clamp(22px, 2vw, 30px)/1.3 var(--serif); max-width: 30ch; margin-bottom: 34px; }
 .lang-ar .contact__text { font-style: normal; line-height: 1.6; }
-.contact__email { display: inline-block; font: 400 clamp(26px, 4.2vw, 68px)/1.1 "Bodoni Moda", serif; letter-spacing: -.025em; word-break: break-all; margin-bottom: 40px; background: linear-gradient(var(--ink), var(--ink)) 0 100% / 100% 1px no-repeat; padding-bottom: 6px; transition: background-size .6s var(--ease); }
+.contact__email { display: inline-block; font: 500 clamp(26px, 4vw, 64px)/1.15 var(--display); letter-spacing: -.015em; word-break: break-all; margin-bottom: 40px; background: linear-gradient(var(--ink), var(--ink)) 0 100% / 100% 1px no-repeat; padding-bottom: 6px; transition: background-size .6s var(--ease); }
 .contact__email:hover { background-size: 0 1px; background-position: 100% 100%; }
 .contact__cv { display: flex; flex-wrap: wrap; gap: 12px; }
 .contact__rows { border-top: 1px solid var(--ink); }
@@ -436,11 +436,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 /* ---------- footer ---------- */
 .foot { position: relative; overflow: clip; background: var(--pearl); padding: clamp(40px, 5vw, 80px) var(--gutter) 28px; border-top: 1px solid var(--hair); }
 .foot__sig {
-  font: 500 clamp(60px, 14.6vw, 260px)/.8 "Bodoni Moda", serif; letter-spacing: -.045em; white-space: nowrap; text-align: center;
+  font: 600 clamp(56px, 13.6vw, 240px)/.85 var(--display); letter-spacing: -.02em; white-space: nowrap; text-align: center; direction: ltr;
   background: var(--brushed-dark) var(--sheen, 50%) 50% / 140% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   margin: 0 calc(var(--gutter) * -1) clamp(28px, 3vw, 48px);
 }
-.lang-ar .foot__sig { font-family: "Amiri", serif; font-weight: 700; line-height: 1.3; letter-spacing: 0; }
 .foot__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; padding-top: 22px; border-top: 1px solid var(--hair); font-size: 12.5px; color: var(--steel-d); }
 .foot__row a { color: var(--ink); font-weight: 600; }
 
@@ -471,6 +470,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   :root { --mast-h: 60px; }
   .mast { grid-template-columns: 1fr auto; }
   .mast__name { display: none; }
+  .mast__mono img { width: 40px; height: 40px; }
   .mast__burger { display: block; }
   .mast__cv { display: none; }
   .mast__nav {
@@ -481,7 +481,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .mast__nav ol { flex-direction: column; gap: 0; border-top: 1px solid var(--ink); }
   .mast__nav li { border-bottom: 1px solid var(--hair); }
   .mast__nav a { font: 400 38px/1.2 var(--serif); padding: 14px 0; gap: 16px; width: 100%; }
-  .lang-ar .mast__nav a { font-weight: 700; font-size: 34px; }
+  .lang-ar .mast__nav a { font-weight: 600; font-size: 30px; }
   .mast__nav .num { display: inline; font-size: 12px; }
   .mast__nav a::after { display: none; }
   .mast__drawer-foot { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; font-weight: 600; }
@@ -495,10 +495,9 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .hero__frame { inset: calc(23% - 12px) 12px 0 12px; }
   .hero__plate { clip-path: inset(23% 26px 0 26px); }
   @keyframes plateIn { from { clip-path: inset(100% 26px 0 26px); } to { clip-path: inset(23% 26px 0 26px); } }
-  .hero__name--back { top: 17.5cqh; font-size: 30cqw; }
-  .hero__name--front { bottom: 6.5cqh; font-size: 31cqw; text-indent: 22cqw; -webkit-text-stroke-width: 1.1px; }
-  .lang-ar .hero__name--back { top: 4cqh; font-size: 54cqw; }
-  .lang-ar .hero__name--front { bottom: 2cqh; font-size: 36cqw; left: -140cqw; right: -100cqw; }
+  .hero__name--back { top: 18.5cqh; font-size: 26.5cqw; }
+  .hero__name--front { bottom: 6.5cqh; font-size: 27cqw; text-indent: 12cqw; -webkit-text-stroke-width: 1.6px; }
+  .lang-ar .hero__name--front { text-indent: 0; }
   .hero__fig { display: none; }
   .hero__rail, .hero__scroll { display: none; }
   .hero__col { padding: 36px var(--gutter) 0; }
@@ -569,9 +568,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .sec { padding: 24px 0; }
 }
 
-/* Bodoni Moda drops the hyphen to a hairline at high optical sizes:
-   pin text-sized serif settings to a reading optical size. */
-.hero__role, .hero__issue-title, .about__lead, .exp__org, .app__title, .extra__list li, .extra__title,
-.skill__title, .more strong, .edu__degree, .contact__text, .hero__contents .num, .sec-head__no {
-  font-variation-settings: "opsz" 18;
-}
+
+/* Playfair Display defaults to old-style figures; the `font` shorthand resets numeric variants,
+   so lining figures are enforced here for every element (dates, 2028, section numbers). */
+*, *::before, *::after { font-variant-numeric: lining-nums !important; }

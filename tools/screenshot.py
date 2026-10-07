@@ -68,7 +68,7 @@ def main():
                 page.add_style_tag(content=css)
                 time.sleep(0.4)
                 page.screenshot(path=str(out / f"{lang}-{kind}-full.png"), full_page=True)
-                if lang == "en":
+                if True:
                     from PIL import Image
                     full = Image.open(out / f"{lang}-{kind}-full.png")
                     scale = opts.get("device_scale_factor", 1)

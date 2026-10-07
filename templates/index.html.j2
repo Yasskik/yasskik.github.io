@@ -28,17 +28,18 @@
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ site }}assets/img/og.jpg">
-<link rel="icon" href="{{ root }}favicon.svg" type="image/svg+xml">
+<link rel="icon" href="{{ root }}favicon.ico" sizes="48x48">
 <link rel="icon" href="{{ root }}assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="{{ root }}assets/img/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="{{ root }}assets/img/apple-touch-icon.png">
 <link rel="manifest" href="{{ root }}site.webmanifest">
 {% if lang == 'ar' %}
-<link rel="preload" href="{{ root }}assets/fonts/Amiri-normal-700-arabic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}assets/fonts/NotoNaskhArabic-normal-400-700-arabic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ root }}assets/fonts/IBMPlexSansArabic-normal-400-arabic.woff2" as="font" type="font/woff2" crossorigin>
 {% else %}
-<link rel="preload" href="{{ root }}assets/fonts/BodoniModa-normal-400-900-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ root }}assets/fonts/Manrope-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
 {% endif %}
+<link rel="preload" href="{{ root }}assets/fonts/PlayfairDisplay-normal-400-900-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="{{ root }}assets/img/portrait-figure.webp" imagesrcset="{{ root }}assets/img/portrait-figure-640.webp 640w, {{ root }}assets/img/portrait-figure.webp 1008w" imagesizes="(max-width: 760px) 100vw, 560px">
 <link rel="stylesheet" href="{{ root }}assets/css/fonts.css">
 <link rel="stylesheet" href="{{ root }}assets/css/style.css">
@@ -53,7 +54,7 @@
 
 <header class="mast" id="mast">
   <a class="mast__mono" href="#top" aria-label="Yamen Agha — home">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="1.5" y="1.5" width="61" height="61" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="32" y="43" text-anchor="middle" font-family="Bodoni Moda, Didot, serif" font-size="30" font-weight="500" fill="currentColor">YA</text></svg>
+    <picture><source type="image/webp" srcset="{{ root }}assets/img/logo-44.webp 1x, {{ root }}assets/img/logo-88.webp 2x, {{ root }}assets/img/logo-132.webp 3x"><img src="{{ root }}assets/img/logo-44.png" srcset="{{ root }}assets/img/logo-88.png 2x, {{ root }}assets/img/logo-132.png 3x" width="44" height="44" alt=""></picture>
     <span class="mast__name">{{ mast_name }}</span>
   </a>
   <nav class="mast__nav" id="nav" aria-label="Primary">
