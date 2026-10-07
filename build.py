@@ -153,8 +153,7 @@ EN = dict(
              link=None, private="Private repository"),
     ],
     more_title="More builds",
-    more=[("Holy Rosary", "Android app — offline, in Arabic, English and Latin"),
-          ("Prime Store bot", "Telegram ordering bot with admin approvals")],
+    more=[("Holy Rosary", "Android app — offline, in Arabic, English and Latin")],
     # Skills
     skills_no="05", skills_label="Skills", skills_ghost="TOOLKIT",
     skills_title="The <em>toolkit</em>",
@@ -305,8 +304,7 @@ AR.update(
              link=None, private="مستودع خاص"),
     ],
     more_title="أعمال أخرى",
-    more=[("المسبحة الوردية", "تطبيق Android — يعمل دون إنترنت، بالعربية والإنجليزية واللاتينية"),
-          ("بوت Prime Store", "بوت طلبات على Telegram مع موافقات المشرف")],
+    more=[("المسبحة الوردية", "تطبيق Android — يعمل دون إنترنت، بالعربية والإنجليزية واللاتينية")],
     skills_label="المهارات", skills_title="<em>العُدّة</em>",
     skills=[
         ("التمويل والنمذجة", ["النمذجة المالية — DCF والقوائم الثلاث", "التحليل الأساسي للأوراق المالية",
