@@ -252,10 +252,10 @@
     </div>
   </article>
   {% endfor %}
-  <div class="more reveal">
+  {% if more %}<div class="more reveal">
     <p class="label">{{ more_title }}</p>
     <ul>{% for n, d in more %}<li><strong>{{ n }}</strong><span>{{ d }}</span></li>{% endfor %}</ul>
-  </div>
+  </div>{% endif %}
 </section>
 
 <!-- ============ SKILLS ============ -->
