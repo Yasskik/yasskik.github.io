@@ -207,7 +207,7 @@ EN = dict(
                   ("GitHub", "github.com/Yasskik", GH),
                   ("Based", "Aleppo, Syria", None)],
     cv_en="CV — English", cv_ar="CV — العربية", pdf="PDF",
-    footer_note="Designed and built by hand — HTML, CSS & a little JavaScript.",
+    footer_note="Engraved by hand in HTML & CSS — no JavaScript.",
     back_top="Back to top",
 )
 
@@ -370,8 +370,28 @@ AR.update(
                   ("GitHub", "github.com/Yasskik", GH),
                   ("المقر", "حلب، سوريا", None)],
     cv_en="السيرة — English", cv_ar="السيرة — العربية",
-    footer_note="صُمّم وبُني يدوياً — HTML وCSS وقليل من JavaScript.",
+    footer_note="صُمّم وبُني يدوياً بـ HTML وCSS — دون JavaScript.",
     back_top="إلى الأعلى",
+)
+
+# ---- Private-bank (engraved banknote) edition: extra labels ----
+EN.update(
+    nav4=[("#about", "About"), ("#work", "Work"), ("cv", "CV"), ("#contact", "Contact")],
+    topbar="Aleppo · Syria", est="Est. MMXXVI",
+    facts3=("Record", "5 live finance apps · 2 club systems"),
+    serial="No.", register="The Register", seal_alt="Wax seal",
+    work_more="Excel models & case studies", sys_cert="Club system",
+    contact_kicker="Correspondence", sign="Yamen Agha", letter_close="I answer every letter personally.",
+    phones="Phone screenshots",
+)
+AR.update(
+    nav4=[("#about", "نبذة"), ("#work", "الأعمال"), ("cv", "السيرة"), ("#contact", "تواصل")],
+    topbar="حلب · سوريا", est="تأسّس ٢٠٢٦",
+    facts3=("السجل", "5 تطبيقات مالية حيّة · نظامان للنادي"),
+    serial="رقم", register="السجلّ", seal_alt="ختم شمعي",
+    work_more="نماذج Excel ودراسات الحالة", sys_cert="نظام للنادي",
+    contact_kicker="المراسلات", sign="Yamen Agha", letter_close="أردّ شخصياً على كل رسالة.",
+    phones="لقطات من الهاتف",
 )
 
 

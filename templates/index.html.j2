@@ -1,3 +1,6 @@
+{% set ROMAN = ['I','II','III','IV','V','VI','VII','VIII','IX','X'] %}
+{% set cvfile = root ~ 'cv/Yamen_Agha_CV_' ~ ('AR' if lang == 'ar' else 'EN') ~ '.pdf' %}
+{% set arrow = '←' if dir == 'rtl' else '→' %}
 <!doctype html>
 <html lang="{{ lang }}" dir="{{ dir }}">
 <head>
@@ -6,7 +9,7 @@
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 <meta name="author" content="Yamen Agha">
-<meta name="theme-color" content="#F1F0EC">
+<meta name="theme-color" content="#F8F3E7">
 <meta name="color-scheme" content="light">
 <link rel="canonical" href="{{ site }}{% if lang == 'ar' %}ar/{% endif %}">
 <link rel="alternate" hreflang="en" href="{{ site }}">
@@ -19,7 +22,7 @@
 <meta property="og:image" content="{{ site }}assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Yamen Agha — silver portrait">
+<meta property="og:image:alt" content="Yamen Agha — engraved banknote portrait">
 <meta property="og:locale" content="{{ og_locale }}">
 <meta property="og:locale:alternate" content="{{ og_alt }}">
 <meta property="profile:first_name" content="Yamen">
@@ -33,207 +36,147 @@
 <link rel="icon" href="{{ root }}assets/img/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="{{ root }}assets/img/apple-touch-icon.png">
 <link rel="manifest" href="{{ root }}site.webmanifest">
-{% if lang == 'ar' %}
-<link rel="preload" href="{{ root }}assets/fonts/NotoNaskhArabic-normal-400-700-arabic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="{{ root }}assets/fonts/IBMPlexSansArabic-normal-400-arabic.woff2" as="font" type="font/woff2" crossorigin>
-{% else %}
-<link rel="preload" href="{{ root }}assets/fonts/Manrope-normal-400-700-latin.woff2" as="font" type="font/woff2" crossorigin>
-{% endif %}
-<link rel="preload" href="{{ root }}assets/fonts/PlayfairDisplay-normal-400-900-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="{{ root }}assets/img/portrait-figure.webp" imagesrcset="{{ root }}assets/img/portrait-figure-640.webp 640w, {{ root }}assets/img/portrait-figure.webp 1008w" imagesizes="(max-width: 760px) 100vw, 560px">
+<link rel="preload" href="{{ root }}assets/fonts/EBGaramond-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+{% if lang == 'ar' %}<link rel="preload" href="{{ root }}assets/fonts/IBMPlexSansArabic-normal-400-arabic.woff2" as="font" type="font/woff2" crossorigin>{% endif %}
+<link rel="preload" as="image" href="{{ root }}assets/img/portrait-engraved.webp" imagesrcset="{{ root }}assets/img/portrait-engraved-640.webp 640w, {{ root }}assets/img/portrait-engraved.webp 1008w" imagesizes="(max-width: 760px) 330px, 500px">
 <link rel="stylesheet" href="{{ root }}assets/css/fonts.css">
 <link rel="stylesheet" href="{{ root }}assets/css/style.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Yamen Agha","alternateName":"{{ name_full }}","url":"{{ site }}","image":"{{ site }}assets/img/og.jpg","email":"mailto:{{ email }}","telephone":"{{ phone_tel }}","jobTitle":"DSE-trained broker candidate","address":{"@type":"PostalAddress","addressLocality":"Aleppo","addressCountry":"SY"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Aleppo University"},"knowsLanguage":["ar","en","ru"],"sameAs":["{{ linkedin }}","{{ github }}"]}
 </script>
-<script>document.documentElement.classList.add('js')</script>
 </head>
 <body class="lang-{{ lang }}">
 <a class="skip" href="#main">{{ skip }}</a>
-<div class="grain" aria-hidden="true"></div>
-
-<header class="mast" id="mast">
-  <a class="mast__mono" href="#top" aria-label="Yamen Agha — home">
-    <picture><source type="image/webp" srcset="{{ root }}assets/img/logo-44.webp 1x, {{ root }}assets/img/logo-88.webp 2x, {{ root }}assets/img/logo-132.webp 3x"><img src="{{ root }}assets/img/logo-44.png" srcset="{{ root }}assets/img/logo-88.png 2x, {{ root }}assets/img/logo-132.png 3x" width="44" height="44" alt=""></picture>
-    <span class="mast__name">{{ mast_name }}</span>
-  </a>
-  <nav class="mast__nav" id="nav" aria-label="Primary">
-    <ol>
-      {% for id, label in nav %}
-      <li><a href="#{{ id }}" data-nav="{{ id }}"><span class="num">{{ '%02d' % loop.index }}</span>{{ label }}</a></li>
-      {% endfor %}
-    </ol>
-    <div class="mast__drawer-foot">
-      <a href="{{ root }}cv/Yamen_Agha_CV_EN.pdf" download>{{ cv_en }} ↓</a>
-      <a href="{{ root }}cv/Yamen_Agha_CV_AR.pdf" download>{{ cv_ar }} ↓</a>
-    </div>
+<div class="sheet">
+<div class="topbar"><span>Yamen Agha · {{ topbar }}</span><span class="topbar__est">{{ est }}</span><a class="topbar__lang" href="{{ alt_href }}" hreflang="{{ alt_lang }}" lang="{{ alt_lang }}">{{ alt_label }}</a></div>
+<header class="mast" id="top">
+  <nav class="nav nav--start" aria-label="Primary">
+    {% for href, label in nav4[:2] %}<a href="{{ href }}">{{ label }}</a>{% endfor %}
   </nav>
-  <div class="mast__right">
-    <a class="mast__lang" href="{{ alt_href }}" hreflang="{{ alt_lang }}" lang="{{ alt_lang }}">{{ alt_label }}</a>
-    <a class="mast__cv" href="{{ root }}cv/Yamen_Agha_CV_{{ 'AR' if lang == 'ar' else 'EN' }}.pdf" download data-magnetic>{{ cv_short }} <span aria-hidden="true">↓</span></a>
-    <button class="mast__burger" id="burger" aria-expanded="false" aria-controls="nav"><span class="sr-only">{{ menu }}</span><i></i><i></i></button>
-  </div>
+  <a class="mast__crest" href="#top" aria-label="Yamen Agha — home"><img src="{{ root }}assets/img/crest.webp" width="104" height="104" alt=""></a>
+  <nav class="nav nav--end" aria-label="Primary, continued">
+    <a href="{{ cvfile }}" download>{{ nav4[2][1] }}</a><a href="{{ nav4[3][0] }}">{{ nav4[3][1] }}</a>
+  </nav>
 </header>
+<div class="rule2" aria-hidden="true"></div>
 
 <main id="main">
-<!-- ============ HERO ============ -->
-<section class="hero" id="top" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title">
   <h1 class="sr-only" id="hero-title">{{ h1 }}</h1>
-  <div class="hero__rail hero__rail--start" aria-hidden="true"><span>{{ rail_left }}</span></div>
-  <div class="hero__rail hero__rail--end" aria-hidden="true"><span>{{ rail_right }}</span></div>
-
-  <div class="hero__grid">
-    <div class="hero__col hero__col--start">
-      <div class="hero__issue reveal">
-        <span class="label">{{ vol }}</span><span class="rule"></span><span class="label">{{ edition }}</span>
-      </div>
-      <div class="hero__intro">
-        <p class="hero__kicker reveal">{{ kicker }}</p>
-        <p class="hero__role reveal">{{ hero_role }}</p>
-        <p class="hero__lede reveal">{{ hero_lede }}</p>
-      </div>
-      <dl class="hero__facts reveal">
-        {% for k, v in facts %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
-      </dl>
-    </div>
-
-    <div class="hero__stage" id="stage">
-      <div class="hero__frame" aria-hidden="true"><i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i></div>
-      <picture class="hero__plate" data-depth="plate">
-        <img src="{{ root }}assets/img/portrait-plate.webp" srcset="{{ root }}assets/img/portrait-plate-640.webp 640w, {{ root }}assets/img/portrait-plate.webp 1008w" sizes="(max-width: 760px) 100vw, 560px" width="1008" height="1792" alt="" fetchpriority="high" decoding="async">
-      </picture>
-      <span class="hero__name hero__name--back" aria-hidden="true" data-depth="back">{{ name_back }}</span>
-      <img class="hero__figure" data-depth="figure" src="{{ root }}assets/img/portrait-figure.webp" srcset="{{ root }}assets/img/portrait-figure-640.webp 640w, {{ root }}assets/img/portrait-figure.webp 1008w" sizes="(max-width: 760px) 100vw, 560px" width="1008" height="1792" alt="Portrait of Yamen Agha in profile, wearing a silver suit" fetchpriority="high" decoding="async">
-      <span class="hero__name hero__name--front" aria-hidden="true" data-depth="front">{{ name_front }}</span>
-      <span class="hero__fig" aria-hidden="true">{{ fig1 }}</span>
-    </div>
-
-    <div class="hero__col hero__col--end">
-      <p class="hero__issue-title reveal">{{ issue_label }}</p>
-      <div class="hero__contents reveal">
-        <p class="label">{{ in_issue }}</p>
-        <ol>
-          {% for n, href, line in cover_lines %}
-          <li><a href="#{{ href }}"><span class="num">{{ n }}</span><span>{{ line }}</span></a></li>
-          {% endfor %}
-        </ol>
-      </div>
-      <div class="hero__cta reveal">
-        <a class="btn btn--solid" href="{{ root }}cv/Yamen_Agha_CV_{{ 'AR' if lang == 'ar' else 'EN' }}.pdf" download data-magnetic><span>{{ cta_cv }}</span><b aria-hidden="true">↓</b></a>
-        <a class="btn btn--line" href="#contact" data-magnetic><span>{{ cta_contact }}</span><b aria-hidden="true">{{ '←' if dir == 'rtl' else '→' }}</b></a>
-      </div>
+  <div class="hero__start">
+    <p class="sc">{{ kicker }}</p>
+    <p class="hero__role">{{ hero_role }}</p>
+    <p class="hero__lede">{{ hero_lede }}</p>
+    <div class="btns">
+      <a class="btn btn--ink" href="{{ cvfile }}" download>{{ cta_cv }} <span aria-hidden="true">↓</span></a>
+      <a class="btn btn--line" href="#contact">{{ cta_contact }} <span aria-hidden="true">{{ arrow }}</span></a>
     </div>
   </div>
-  <a class="hero__scroll" href="#about" aria-label="{{ scroll }}"><span>{{ scroll }}</span><i></i></a>
+  <div class="stage" aria-hidden="true">
+    <img class="stage__oval" src="{{ root }}assets/img/guil-oval.webp" width="600" height="800" alt="" decoding="async">
+    <span class="name name--back">YAMEN</span>
+    <img class="stage__fig" src="{{ root }}assets/img/portrait-engraved.webp" srcset="{{ root }}assets/img/portrait-engraved-640.webp 640w, {{ root }}assets/img/portrait-engraved.webp 1008w" sizes="(max-width: 760px) 330px, 500px" width="1008" height="1792" alt="" fetchpriority="high" decoding="async">
+    <span class="name name--front">AGHA</span>
+  </div>
+  <dl class="hero__end">
+    {% for k, v in facts %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
+    <div><dt>{{ facts3[0] }}</dt><dd>{{ facts3[1] }}</dd></div>
+  </dl>
 </section>
 
-<!-- ============ TICKER ============ -->
-<div class="ticker" aria-label="Highlights">
-  <div class="ticker__track">
-    {% for rep in range(2) %}
-    <ul class="ticker__list"{% if rep == 1 %} aria-hidden="true"{% endif %}>
-      {% for k, arrow, v, dirn in ticker %}
-      <li><span class="ticker__k">{{ k }}</span><span class="ticker__v ticker__v--{{ dirn }}"><b aria-hidden="true">{{ arrow }}</b> {{ v }}</span></li>
-      {% endfor %}
-    </ul>
-    {% endfor %}
-  </div>
-</div>
-
-{% macro head(no, label, ghost, title) %}
+{% macro divider() %}<div class="divider" aria-hidden="true"><i></i><img src="{{ root }}assets/img/crest-ink.webp" width="64" height="64" alt="" loading="lazy"><i></i></div>{% endmacro %}
+{% macro head(no, label, title) %}
 <header class="sec-head">
-  <span class="sec-head__ghost" aria-hidden="true" data-drift>{{ ghost }}</span>
-  <div class="sec-head__meta reveal"><span class="sec-head__no">{{ no }}</span><span class="rule"></span><span class="label">{{ label }}</span></div>
-  <h2 class="sec-head__title reveal">{{ title | safe }}</h2>
+  <p class="sc">§ {{ no }} · {{ label }}</p>
+  <h2>{{ title | safe }}</h2>
 </header>
 {% endmacro %}
+{% macro seal() %}<img class="seal" src="{{ root }}assets/img/seal-wax.webp" width="104" height="104" alt="" loading="lazy">{% endmacro %}
 
-<!-- ============ ABOUT ============ -->
-<section class="sec about" id="about" data-section>
-  {{ head(about_no, about_label, about_ghost, about_title) }}
+{{ divider() }}
+<section class="sec about" id="about">
+  {{ head(about_no, about_label, about_title) }}
   <div class="about__grid">
-    <figure class="about__fig reveal" aria-hidden="true">
-      <div class="about__crop"><img src="{{ root }}assets/img/portrait-plate-640.webp" width="640" height="1138" alt="" loading="lazy" decoding="async"></div>
-      <figcaption>{{ fig2 }}</figcaption>
-    </figure>
     <div class="about__text">
-      <p class="about__lead reveal">{{ about_lead }}</p>
-      <p class="about__body reveal">{{ about_body }}</p>
+      <p class="about__lead">{{ about_lead }}</p>
+      <p>{{ about_body }}</p>
     </div>
-    <dl class="about__facts reveal">
+    <dl class="ledger">
       {% for k, v in about_facts %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
     </dl>
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
-<section class="sec exp" id="experience" data-section>
-  {{ head(exp_no, exp_label, exp_ghost, exp_title) }}
+{{ divider() }}
+<section class="sec exp" id="experience">
+  {{ head(exp_no, exp_label, exp_title) }}
   <ol class="exp__list">
     {% for e in experience %}
-    <li class="exp__item reveal" data-sheen>
-      <span class="exp__num" aria-hidden="true">{{ '%02d' % loop.index }}</span>
+    <li class="exp__item">
+      <span class="exp__num" aria-hidden="true">{{ ROMAN[loop.index0] }}</span>
       <div class="exp__head">
-        <h3 class="exp__org">{{ e.org }}</h3>
+        <h3>{{ e.org }}</h3>
         <p class="exp__role">{{ e.role }}</p>
+        <p class="exp__when">{{ e.date }}{% if e.place %} · {{ e.place }}{% endif %}</p>
       </div>
-      <ul class="exp__bullets">
-        {% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}
-      </ul>
-      <div class="exp__when"><span class="mono">{{ e.date }}</span>{% if e.place %}<span>{{ e.place }}</span>{% endif %}</div>
+      <ul class="exp__bullets">{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
     </li>
     {% endfor %}
   </ol>
 </section>
 
-<!-- ============ WORK ============ -->
-<section class="sec work" id="work" data-section>
-  {{ head(work_no, work_label, work_ghost, work_title) }}
-  <p class="sec-intro reveal">{{ work_intro }}</p>
-  <div class="apps">
-    {% for a in apps_list %}
-    {% set t = apps[a.key] %}
-    <article class="app reveal{% if loop.first %} app--feature{% endif %}" data-sheen>
-      <a class="app__shot" href="{{ a.live }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-        <img src="{{ root }}assets/img/{{ a.img }}" width="1200" height="750" alt="" loading="lazy" decoding="async">
-        <span class="app__index">{{ '%02d' % loop.index }} / 05</span>
-      </a>
-      <div class="app__body">
-        <p class="label">{{ t[1] }}</p>
-        <h3 class="app__title">{{ t[0] }}</h3>
-        <p class="app__text">{{ t[2] }}</p>
-        <ul class="tags">{% for g in t[3] %}<li>{{ g }}</li>{% endfor %}</ul>
-        <div class="app__links">
-          <a class="btn btn--solid btn--sm" href="{{ a.live }}" target="_blank" rel="noopener" data-magnetic><span>{{ live }}</span><b aria-hidden="true">↗</b><span class="sr-only"> — {{ t[0] }}</span></a>
-          <a class="btn btn--line btn--sm" href="{{ a.code }}" target="_blank" rel="noopener" data-magnetic><span>{{ code }}</span><b aria-hidden="true">↗</b><span class="sr-only"> — {{ t[0] }}</span></a>
+{{ divider() }}
+<section class="sec work" id="work">
+  {{ head(work_no, work_label, work_title) }}
+  <p class="sec-intro">{{ work_intro }}</p>
+  <div class="certs">
+    {% for a in apps_list %}{% set t = apps[a.key] %}
+    <article class="cert{% if loop.first %} cert--wide{% endif %}">
+      <div class="cert__in">
+        <div class="cert__top"><span class="serial">{{ serial }} YA·2026·{{ '%04d' % loop.index }}</span><span class="sc">{{ t[1] }}</span><span class="serial serial--2" aria-hidden="true">{{ serial }} YA·2026·{{ '%04d' % loop.index }}</span></div>
+        <p class="cert__no" aria-hidden="true">{{ ROMAN[loop.index0] }}</p>
+        <h3>{{ t[0] }}</h3>
+        <div class="cert__body">
+          <a class="cert__shot" href="{{ a.live }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="{{ root }}assets/img/{{ a.img }}" width="1200" height="750" alt="" loading="lazy" decoding="async"></a>
+          <div class="cert__copy">
+            <p class="cert__text">{{ t[2] }}</p>
+            <p class="tags">{% for g in t[3] %}<span>{{ g }}</span>{% endfor %}</p>
+            <div class="cert__foot">
+              <div class="btns">
+                <a class="btn btn--ink" href="{{ a.live }}" target="_blank" rel="noopener">{{ live }} <span aria-hidden="true">↗</span><span class="sr-only"> — {{ t[0] }}</span></a>
+                <a class="btn btn--line" href="{{ a.code }}" target="_blank" rel="noopener">{{ code }} <span aria-hidden="true">↗</span><span class="sr-only"> — {{ t[0] }}</span></a>
+              </div>
+              {{ seal() }}
+            </div>
+          </div>
         </div>
       </div>
     </article>
     {% endfor %}
   </div>
-  <div class="work__extra">
-    <div class="extra reveal" data-sheen>
-      <p class="label">{{ excel_title }}</p>
-      <ol class="extra__list">
-        {% for x in excel_items %}<li><span class="num">{{ '%02d' % loop.index }}</span>{{ x }}</li>{% endfor %}
-      </ol>
-      <a class="link-arrow" href="{{ portfolio_repo }}/tree/main/finance" target="_blank" rel="noopener">{{ excel_link }} <span aria-hidden="true">↗</span></a>
-    </div>
+
+  <div class="panel excel">
+    <p class="sc">{{ excel_title }}</p>
+    <ol>{% for x in excel_items %}<li>{{ x }}</li>{% endfor %}</ol>
+    <a class="btn btn--line" href="{{ portfolio_repo }}/tree/main/finance" target="_blank" rel="noopener">{{ excel_link }} <span aria-hidden="true">↗</span></a>
   </div>
+
   <div class="cases" id="case-studies">
-    <p class="label reveal">{{ cases_label }}</p>
-    <h3 class="cases__title reveal">{{ cases_title|safe }}</h3>
-    <p class="sec-intro reveal">{{ cases_intro }}</p>
-    <div class="cases__grid">
+    <p class="sc c">{{ cases_label }}</p>
+    <h3 class="cases__title">{{ cases_title|safe }}</h3>
+    <p class="sec-intro">{{ cases_intro }}</p>
+    <div class="certs certs--cases">
       {% for c in cases %}
-      <article class="case reveal" data-sheen>
-        <p class="label">{{ '%02d' % loop.index }} — {{ c.kind }}</p>
-        <h4 class="case__title">{{ c.title }}</h4>
-        <p class="case__text">{{ c.text }}</p>
-        <ul class="tags">{% for g in c.tags %}<li>{{ g }}</li>{% endfor %}</ul>
-        <div class="app__links">
-          <a class="btn btn--solid btn--sm" href="{{ root }}{{ c.pdf }}" target="_blank" rel="noopener" data-magnetic><span>{{ report }} · PDF</span><b aria-hidden="true">↓</b><span class="sr-only"> — {{ c.title }}, {{ c.n }} {{ pages }}</span></a>
-          {% if c.xlsx %}<a class="btn btn--line btn--sm" href="{{ root }}{{ c.xlsx }}" download data-magnetic><span>{{ model }}</span><b aria-hidden="true">↓</b><span class="sr-only"> — {{ c.title }}</span></a>{% endif %}
+      <article class="cert cert--case">
+        <div class="cert__in">
+          <div class="cert__top"><span class="serial">{{ serial }} CS·{{ '%03d' % loop.index }}</span><span class="sc">{{ c.kind }}</span><span class="serial serial--2" aria-hidden="true">{{ c.n }} {{ pages }}</span></div>
+          <h4>{{ c.title }}</h4>
+          <p class="cert__text">{{ c.text }}</p>
+          <p class="tags">{% for g in c.tags %}<span>{{ g }}</span>{% endfor %}</p>
+          <div class="btns">
+            <a class="btn btn--ink" href="{{ root }}{{ c.pdf }}" target="_blank" rel="noopener">{{ report }} · PDF <span aria-hidden="true">↓</span><span class="sr-only"> — {{ c.title }}, {{ c.n }} {{ pages }}</span></a>
+            {% if c.xlsx %}<a class="btn btn--line" href="{{ root }}{{ c.xlsx }}" download>{{ model }} <span aria-hidden="true">↓</span><span class="sr-only"> — {{ c.title }}</span></a>{% endif %}
+          </div>
         </div>
       </article>
       {% endfor %}
@@ -241,112 +184,99 @@
   </div>
 </section>
 
-<!-- ============ SYSTEMS ============ -->
-<section class="sec systems" id="systems" data-section>
-  {{ head(sys_no, sys_label, sys_ghost, sys_title) }}
-  <p class="sec-intro reveal">{{ sys_intro }}</p>
+{{ divider() }}
+<section class="sec systems" id="systems">
+  {{ head(sys_no, sys_label, sys_title) }}
+  <p class="sec-intro">{{ sys_intro }}</p>
   {% for s in systems %}
-  <article class="sys{% if loop.index is even %} sys--flip{% endif %}">
-    <div class="sys__phones reveal" aria-label="{{ s.name }}">
-      {% for src, alt in s.imgs %}
-      <figure class="phone phone--{{ loop.index }}" data-depth-y="{{ 0.06 if loop.first else -0.04 }}"><img src="{{ root }}assets/img/{{ src }}" width="600" height="1298" alt="{{ alt }}" loading="lazy" decoding="async"></figure>
-      {% endfor %}
-      <span class="sys__big" aria-hidden="true">{{ '%02d' % loop.index }}</span>
-    </div>
-    <div class="sys__text">
-      <p class="label reveal">{{ s.kind }}</p>
-      <h3 class="sys__name reveal">{{ s.name }}</h3>
-      <p class="sys__desc reveal">{{ s.text }}</p>
-      <ul class="sys__points reveal">{% for p in s.points %}<li>{{ p }}</li>{% endfor %}</ul>
-      <p class="sys__tech reveal mono">{{ s.tech }}</p>
-      <div class="sys__links reveal">
-        {% if s.link %}<a class="btn btn--solid btn--sm" href="{{ s.link[1] }}" target="_blank" rel="noopener" data-magnetic><span>{{ s.link[0] }}</span><b aria-hidden="true">↗</b></a>{% endif %}
-        <span class="pill"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1" fill="none" stroke="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor"/></svg>{{ s.private }}</span>
+  <article class="cert cert--sys">
+    <div class="cert__in">
+      <div class="cert__top"><span class="serial">{{ serial }} YA·CLUB·{{ '%02d' % loop.index }}</span><span class="sc">{{ s.kind }}</span><span class="serial serial--2" aria-hidden="true">{{ serial }} YA·CLUB·{{ '%02d' % loop.index }}</span></div>
+      <div class="sys">
+        <div class="sys__phones">
+          {% for src, alt in s.imgs %}<figure class="phone"><img src="{{ root }}assets/img/{{ src }}" width="600" height="1298" alt="{{ alt }}" loading="lazy" decoding="async"></figure>{% endfor %}
+        </div>
+        <div class="sys__text">
+          <h3>{{ s.name }}</h3>
+          <p class="cert__text">{{ s.text }}</p>
+          <ul class="sys__points">{% for p in s.points %}<li>{{ p }}</li>{% endfor %}</ul>
+          <p class="sys__tech">{{ s.tech }}</p>
+          <div class="cert__foot">
+            <div class="btns">
+              {% if s.link %}<a class="btn btn--ink" href="{{ s.link[1] }}" target="_blank" rel="noopener">{{ s.link[0] }} <span aria-hidden="true">↗</span></a>{% endif %}
+              <span class="pill">{{ s.private }}</span>
+            </div>
+            {{ seal() }}
+          </div>
+        </div>
       </div>
     </div>
   </article>
   {% endfor %}
-  {% if more %}<div class="more reveal">
-    <p class="label">{{ more_title }}</p>
-    <ul>{% for n, d in more %}<li><strong>{{ n }}</strong><span>{{ d }}</span></li>{% endfor %}</ul>
-  </div>{% endif %}
 </section>
 
-<!-- ============ SKILLS ============ -->
-<section class="sec skills" id="skills" data-section>
-  {{ head(skills_no, skills_label, skills_ghost, skills_title) }}
+{{ divider() }}
+<section class="sec skills" id="skills">
+  {{ head(skills_no, skills_label, skills_title) }}
   <div class="skills__grid">
     {% for group, items in skills %}
-    <div class="skill reveal" data-sheen>
-      <p class="skill__no mono">{{ '%02d' % loop.index }}</p>
-      <h3 class="skill__title">{{ group }}</h3>
-      <ul>{% for i in items %}<li>{{ i }}</li>{% endfor %}</ul>
-    </div>
+    <div class="skill"><p class="skill__no" aria-hidden="true">{{ ROMAN[loop.index0] }}</p><h3>{{ group }}</h3><ul>{% for i in items %}<li>{{ i }}</li>{% endfor %}</ul></div>
     {% endfor %}
   </div>
 </section>
 
-<!-- ============ EDUCATION & LANGUAGES ============ -->
-<section class="sec edu" id="education" data-section>
-  {{ head(edu_no, edu_label, edu_ghost, edu_school) }}
+{{ divider() }}
+<section class="sec edu" id="education">
+  {{ head(edu_no, edu_label, edu_school) }}
   <div class="edu__grid">
-    <div class="edu__main reveal">
+    <div class="panel">
       <p class="edu__degree">{{ edu_degree }}</p>
-      <p class="edu__meta"><span>{{ edu_year }}</span><span>{{ edu_place }}</span></p>
-      <p class="label">{{ edu_course_label }}</p>
-      <ul class="tags tags--lg">{% for c in courses %}<li>{{ c }}</li>{% endfor %}</ul>
+      <p class="edu__meta">{{ edu_year }} · {{ edu_place }} · {{ edu_grad_label }} {{ edu_grad }}</p>
+      <p class="sc">{{ edu_course_label }}</p>
+      <p class="tags tags--lg">{% for c in courses %}<span>{{ c }}</span>{% endfor %}</p>
     </div>
-    <div class="edu__year reveal" aria-label="{{ edu_grad_label }} {{ edu_grad }}">
-      <span class="edu__year-num" aria-hidden="true">{{ edu_grad }}</span>
-      <span class="label">{{ edu_grad_label }}</span>
+    <div class="panel">
+      <p class="sc">{{ lang_title }}</p>
+      <ul class="langs">
+        {% for script, name, level, pct, code in languages %}
+        <li><span class="langs__script" lang="{{ code }}">{{ script }}</span><span class="langs__name">{{ name }}</span><span class="langs__level">{{ level }}</span></li>
+        {% endfor %}
+      </ul>
     </div>
-  </div>
-  <div class="langs">
-    <p class="label reveal">{{ lang_title }}</p>
-    <ul class="langs__list">
-      {% for script, name, level, pct, code in languages %}
-      <li class="lang reveal">
-        <span class="lang__script" lang="{{ code }}">{{ script }}</span>
-        <span class="lang__name">{{ name }}</span>
-        <span class="lang__meter" aria-hidden="true"><i style="--v: {{ pct }}%"></i></span>
-        <span class="lang__level mono">{{ level }}</span>
-      </li>
-      {% endfor %}
-    </ul>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section class="sec contact" id="contact" data-section>
-  {{ head(contact_no, contact_label, contact_ghost, contact_title) }}
-  <div class="contact__grid">
-    <div class="contact__main">
-      <p class="contact__text reveal">{{ contact_text }}</p>
-      <a class="contact__email reveal" href="mailto:{{ email }}" dir="ltr"><span>{{ email }}</span></a>
-      <div class="contact__cv reveal">
-        <a class="btn btn--solid" href="{{ root }}cv/Yamen_Agha_CV_EN.pdf" download data-magnetic><span>{{ cv_en }}</span><b aria-hidden="true">↓</b></a>
-        <a class="btn btn--line" href="{{ root }}cv/Yamen_Agha_CV_AR.pdf" download data-magnetic><span>{{ cv_ar }}</span><b aria-hidden="true">↓</b></a>
-      </div>
+<section class="contact" id="contact">
+  <div class="letter">
+    <div class="letter__band" aria-hidden="true"></div>
+    <img class="letter__crest" src="{{ root }}assets/img/crest.webp" width="110" height="110" alt="" loading="lazy">
+    <p class="sc">§ {{ contact_no }} · {{ contact_kicker }}</p>
+    <h2>{{ contact_title|safe }}</h2>
+    <p class="letter__text">{{ contact_text }} {{ letter_close }}</p>
+    <a class="letter__email" href="mailto:{{ email }}" dir="ltr">{{ email }}</a>
+    <div class="btns btns--c">
+      <a class="btn btn--ink" href="mailto:{{ email }}">{{ contact_rows[0][0] }} <span aria-hidden="true">✉</span></a>
+      <a class="btn btn--line" href="{{ linkedin }}" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+      <a class="btn btn--line" href="{{ github }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
     </div>
-    <dl class="contact__rows reveal">
-      {% for k, v, href in contact_rows %}
-      <div><dt>{{ k }}</dt><dd>{% if href %}<a href="{{ href }}"{% if href.startswith('http') %} target="_blank" rel="noopener"{% endif %} dir="ltr">{{ v }}</a>{% else %}{{ v }}{% endif %}</dd></div>
-      {% endfor %}
+    <div class="btns btns--c">
+      <a class="btn btn--line" href="{{ root }}cv/Yamen_Agha_CV_EN.pdf" download>{{ cv_en }} <span aria-hidden="true">↓</span></a>
+      <a class="btn btn--line" href="{{ root }}cv/Yamen_Agha_CV_AR.pdf" download>{{ cv_ar }} <span aria-hidden="true">↓</span></a>
+    </div>
+    <dl class="letter__rows">
+      {% for k, v, href in contact_rows %}<div><dt>{{ k }}</dt><dd>{% if href %}<a href="{{ href }}"{% if href.startswith('http') %} target="_blank" rel="noopener"{% endif %} dir="ltr">{{ v }}</a>{% else %}{{ v }}{% endif %}</dd></div>{% endfor %}
     </dl>
+    <p class="sig" dir="ltr">{{ sign }}</p>
+    <div class="letter__band" aria-hidden="true"></div>
   </div>
 </section>
 </main>
 
 <footer class="foot">
-  <p class="foot__sig" aria-hidden="true">{{ name_back }} {{ name_front }}</p>
-  <div class="foot__row">
-    <span>© {{ year }} Yamen Agha · {{ edu_place }}</span>
-    <span>{{ footer_note }}</span>
-    <a href="#top">{{ back_top }} ↑</a>
-  </div>
+  <span>© {{ year }} Yamen Agha · {{ edu_place }}</span>
+  <span>{{ footer_note }}</span>
+  <a href="#top">{{ back_top }} ↑</a>
 </footer>
-
-<div class="progress" aria-hidden="true"><span id="progress-num">01</span><i></i><span>07</span></div>
-<script src="{{ root }}assets/js/main.js" defer></script>
+</div>
 </body>
 </html>

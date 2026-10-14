@@ -7,13 +7,13 @@ DSE-trained broker candidate and third-year accounting student, Aleppo.
 
 [**yasskik.github.io**](https://yasskik.github.io/) · [النسخة العربية](https://yasskik.github.io/ar/) · [LinkedIn](https://www.linkedin.com/in/yamen-agha-157600288) · [Finance projects](https://github.com/Yasskik/portfolio)
 
-<img src="previews/en-desktop-hero.png" alt="Portfolio hero: silver portrait with the name YAMEN set behind the figure and AGHA outlined in front" width="100%">
+<img src="previews/en-desktop-hero.png" alt="Portfolio hero: navy line-engraved portrait in a guilloché oval, YAMEN behind the head and AGHA in bordeaux in front" width="100%">
 
 </div>
 
 ## The idea
 
-A personal site designed like a fashion-magazine cover in silver. A monochrome portrait sits in a framed plate, and the head breaks out of the frame. The name is layered around the figure: **YAMEN** in brushed-graphite Playfair Display sits *behind* the portrait, and **AGHA** in an outlined italic sits *in front* of it. Hairline rules, issue numbers ("Vol. 01 — Aleppo, 2026"), vertical side rails and oversized outlined section words carry the editorial look through the rest of the page.
+A personal site designed like the stationery of an old Swiss private bank. Warm ivory cotton paper, navy ink, bordeaux and hairline double rules. The portrait is a navy **line engraving**, like the vignette on a banknote, set inside a **guilloché** oval drawn with interlaced sine curves. The name is layered around it: **YAMEN** in navy sits *behind* the head, and **AGHA** in bordeaux sits *in front*. Every project is a numbered **certificate** with a serial number (No. YA·2026·0001) and a bordeaux wax seal.
 
 The content mirrors the latest CV (v3): the DSE broker training, the University of Geneva & UBS specialization, accounting ERP work, the five live finance apps, four bank-format case studies (credit memo, solar feasibility study, portfolio proposal, Syrian pound research paper, with report PDFs and Excel models in `case-studies/`) and the systems built for the Aleppo stamp club.
 
@@ -27,26 +27,23 @@ The content mirrors the latest CV (v3): the DSE broker training, the University 
 
 ## Features
 
-- **Layered portrait hero.** A clean figure cutout sits over the original plate, so type can pass behind and in front of the subject. Scroll and pointer parallax move each layer at its own speed.
-- **Brushed-metal type.** Large display type is clipped to a fine brushed-graphite texture, and the light moves across it as you scroll. No gradients.
-- **Two languages.** A full English site and an Arabic (RTL) edition at `/ar/`, built from one template. The Arabic page keeps the Latin name artwork and sets all real content in Noto Naskh Arabic (headings) and IBM Plex Sans Arabic (text and UI). Every layout uses logical CSS properties so it mirrors properly.
-- **Market-ticker strip.** Real highlights from the CV, such as "70+ scenarios" and "0 execution errors", in ticker style with green and red markers.
-- **Work that can be checked.** Every finance app has a **Live app** link and a **Code** link to its folder in [Yasskik/portfolio](https://github.com/Yasskik/portfolio).
-- **CV downloads.** English and Arabic PDFs are in `cv/`.
-- **Small, careful interactions.** Reveal-on-scroll, magnetic buttons, a soft cursor-follow light on cards, monochrome screenshots that turn to colour on hover, and a section counter.
-- **Monogram.** An engraved silver "YA" plate is the logo in the masthead (1x, 2x and 3x WebP with PNG fallback) and the favicon and app-icon set.
-- **Accessible and fast.** Semantic HTML, a skip link, visible focus, `prefers-reduced-motion` support, self-hosted fonts, WebP images with `srcset`, no framework and about 12 KB of JavaScript.
-- **SEO.** Meta description, Open Graph and Twitter cards, `hreflang` alternates, JSON-LD `Person`, sitemap and favicons.
+- **Engraved banknote hero.** The portrait cutout (made with `rembg`, red background decontaminated) is redrawn as a wavy horizontal line-screen engraving in navy ink. A blind-embossed YA crest sits centred in the masthead between a four-item menu.
+- **Certificates, not cards.** Apps, case studies and club systems are framed like bank certificates: guilloché bands, double hairline frames, serial numbers, Roman numerals and a wax seal. Screenshots sit in framed rectangles and are never cropped.
+- **Made for every reader.** 21-22 px body text in EB Garamond, high-contrast navy on ivory, 58 px tall labelled buttons, a simple four-item menu (About · Work · CV · Contact) and no motion except gentle hover states.
+- **Two languages.** A full English site and an Arabic (RTL) edition at `/ar/`, built from one template. The Arabic page keeps the Latin name artwork and sets all content in Noto Naskh Arabic (headings) and IBM Plex Sans Arabic (text). Logical CSS properties mirror every layout.
+- **Work that can be checked.** Every finance app has a **Live app** and **Code** link; the case studies link their report PDFs and Excel models; CV PDFs in English and Arabic are in `cv/`.
+- **Light.** No JavaScript, no framework. The guilloché, crest and seals are rasterised once to small WebP files, and the paper is a 6 KB tile, so each page loads in well under 1.5 MB.
+- **SEO.** Meta description, Open Graph and Twitter cards (banknote-style share image), `hreflang` alternates, JSON-LD `Person`, sitemap and a YA crest favicon set.
 
 ## Tech
 
 | | |
 |---|---|
 | Markup | Static HTML generated by `build.py` (Python + Jinja2) from one template, `templates/index.html.j2` |
-| Styles | Hand-written CSS (`assets/css/style.css`): container-query units for the hero composition, logical properties for RTL |
-| Script | Vanilla JS (`assets/js/main.js`): IntersectionObserver reveals, rAF parallax, magnetic buttons |
-| Type | Playfair Display (display), Manrope (text), JetBrains Mono (figures), Noto Naskh Arabic and IBM Plex Sans Arabic (Arabic), all self-hosted under the SIL OFL |
-| Images | Portrait cutout made with `rembg` (BiRefNet-portrait model), WebP at 640 and 1008 px; engraved silver "YA" monogram as the logo and favicon set |
+| Styles | Hand-written CSS (`assets/css/style.css`), logical properties for RTL |
+| Script | None |
+| Type | EB Garamond (Latin), Noto Naskh Arabic and IBM Plex Sans Arabic (Arabic), all self-hosted woff2 under the SIL OFL |
+| Images | Engraved portrait WebP at 640 and 1008 px; guilloché oval and bands, embossed crest and wax seal generated from SVG math and rasterised to WebP |
 | Hosting | GitHub Pages, from the root of `main` |
 
 ## Structure
@@ -56,7 +53,7 @@ index.html            English page (generated)
 ar/index.html         Arabic page (generated)
 templates/            Jinja2 template
 build.py              content for both languages + build script
-assets/css|js|img|fonts
+assets/css|img|fonts
 cv/                   CV PDFs (English, Arabic)
 case-studies/         Case study reports (PDF) and Excel models
 previews/             screenshots used in this README
