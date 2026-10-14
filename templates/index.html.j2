@@ -219,10 +219,24 @@
       </ol>
       <a class="link-arrow" href="{{ portfolio_repo }}/tree/main/finance" target="_blank" rel="noopener">{{ excel_link }} <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="extra extra--memo reveal" data-sheen>
-      <p class="label">{{ memo_kind }}</p>
-      <h3 class="extra__title">{{ memo_title }}</h3>
-      <p>{{ memo_text }}</p>
+  </div>
+  <div class="cases" id="case-studies">
+    <p class="label reveal">{{ cases_label }}</p>
+    <h3 class="cases__title reveal">{{ cases_title|safe }}</h3>
+    <p class="sec-intro reveal">{{ cases_intro }}</p>
+    <div class="cases__grid">
+      {% for c in cases %}
+      <article class="case reveal" data-sheen>
+        <p class="label">{{ '%02d' % loop.index }} — {{ c.kind }}</p>
+        <h4 class="case__title">{{ c.title }}</h4>
+        <p class="case__text">{{ c.text }}</p>
+        <ul class="tags">{% for g in c.tags %}<li>{{ g }}</li>{% endfor %}</ul>
+        <div class="app__links">
+          <a class="btn btn--solid btn--sm" href="{{ root }}{{ c.pdf }}" target="_blank" rel="noopener" data-magnetic><span>{{ report }} · PDF</span><b aria-hidden="true">↓</b><span class="sr-only"> — {{ c.title }}, {{ c.n }} {{ pages }}</span></a>
+          {% if c.xlsx %}<a class="btn btn--line btn--sm" href="{{ root }}{{ c.xlsx }}" download data-magnetic><span>{{ model }}</span><b aria-hidden="true">↓</b><span class="sr-only"> — {{ c.title }}</span></a>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>

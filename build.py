@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds index.html (English) and ar/index.html (Arabic, RTL) from one template.
 
-Content lives here, in plain Python dictionaries, and mirrors Yamen Agha's CV (v2).
+Content lives here, in plain Python dictionaries, and mirrors Yamen Agha's CV (v3).
 Run:  python3 build.py        (needs Jinja2: pip install jinja2)
 """
 from pathlib import Path
@@ -63,6 +63,7 @@ EN = dict(
             ("Execution errors", "▼", "0", "down"),
             ("Geneva × UBS", "▲", "Investment management", "up"),
             ("Live finance apps", "▲", "5", "up"),
+            ("Case studies", "▲", "4", "up"),
             ("Models", "▲", "DCF · 3-statement", "up"),
             ("English", "▲", "C1", "up"),
             ("Russian", "▲", "A2", "up"),
@@ -134,6 +135,24 @@ EN = dict(
     memo_title="Commercial bank credit memo",
     memo_kind="Case study",
     memo_text="Credit analysis case study, prepared in the format of a commercial bank credit memo.",
+    cases_label="Case studies",
+    cases_title="Four case studies, <em>bank format</em>",
+    cases_intro="Full reports with their Excel models, written the way a bank or investment team would present them. Companies and clients are fictional; market data are real and cited.",
+    report="Report", model="Excel model", pages="pages",
+    cases=[
+        dict(kind="Credit analysis", title="Bank credit memo", pdf="case-studies/Bank_Credit_Memo_Yamen_Agha.pdf", xlsx="case-studies/Bank_Credit_Memo_Model.xlsx", n=14,
+             text="USD 2.4m equipment term loan and USD 0.9m working-capital revolver for an Aleppo food manufacturer: 25 ratios, five-year CFADS, stress tests, collateral haircuts and a 12-factor rating. Recommendation: approve with conditions.",
+             tags=["Min. DSCR 1.77x", "LTV 39.9%", "Rating BAC-4"]),
+        dict(kind="Project finance", title="Aleppo solar farm feasibility study", pdf="case-studies/Aleppo_Solar_Feasibility_Study_Yamen_Agha.pdf", xlsx="case-studies/Aleppo_Solar_Financial_Model.xlsx", n=36,
+             text="60 MWp plant selling power to factories in Sheikh Najjar Industrial City: capex, 60/40 debt and equity, PPA pricing, sensitivity tornado, 10,000-run Monte Carlo and a risk matrix.",
+             tags=["NPV USD 9.9m", "IRR 20.4%", "LCOE USD 0.0785/kWh", "Min. DSCR 1.91x"]),
+        dict(kind="Wealth management", title="USD 500k portfolio proposal", pdf="case-studies/Portfolio_Proposal_USD500k_Yamen_Agha.pdf", xlsx="case-studies/Portfolio_Proposal_Model.xlsx", n=24,
+             text="Moderate-risk, ten-year mandate for a Gulf-based client: investment policy statement, ten real ETFs, constrained optimization, 2016–2026 backtest, VaR/CVaR and a Sharia-compliant variant.",
+             tags=["CAGR 7.54%", "Volatility 8.28%", "Max drawdown −17.9%"]),
+        dict(kind="Research paper", title="The collapse of the Syrian pound, 2011–2026", pdf="case-studies/Syrian_Pound_Collapse_Research_Yamen_Agha.pdf", xlsx=None, n=65,
+             text="Official and parallel exchange rates, pass-through to food prices and wages, and policy options, built from WFP, IMF, World Bank and Central Bank of Syria data with Python charts.",
+             tags=[">99% value lost", "Premium peak 256%", "61 references"]),
+    ],
     # Systems
     sys_no="04", sys_label="Systems I built", sys_ghost="SYSTEMS",
     sys_title="Systems running <em>a real club</em>",
@@ -165,8 +184,8 @@ EN = dict(
                        "Linux / Bash scripting & automation", "ICDL"]),
         ("Accounting systems", ["Al-Ameen · Al-Bazar · Al-Muhtaseb", "Al-Rasheed · Wakeed",
                                 "Journal entries & chart of accounts", "Trial balance & periodic reports"]),
-        ("Data & AI", ["IBM Cognos", "Data cleaning & storytelling", "LLM-assisted workflows",
-                       "Terminal automation", "Building financial AI agents"]),
+        ("Data & analysis", ["IBM Cognos", "Data cleaning & storytelling", "Credit analysis — DSCR, LTV",
+                       "Project finance — NPV, IRR, LCOE", "Portfolio optimization & VaR"]),
     ],
     # Education & languages
     edu_no="06", edu_label="Education & Languages", edu_ghost="ALEPPO",
@@ -224,6 +243,7 @@ AR.update(
             ("أخطاء التنفيذ", "▼", "0", "down"),
             ("جنيف × UBS", "▲", "إدارة الاستثمار", "up"),
             ("تطبيقات مالية حيّة", "▲", "5", "up"),
+            ("دراسات حالة", "▲", "4", "up"),
             ("النماذج", "▲", "DCF · القوائم الثلاث", "up"),
             ("الإنجليزية", "▲", "C1", "up"),
             ("الروسية", "▲", "A2", "up"),
@@ -302,6 +322,24 @@ AR.update(
              imgs=[("sys-philadesk-dashboard.webp", "الشاشة الرئيسية لتطبيق PhilaDesk"), ("sys-philadesk-finance.webp", "شاشة المالية في PhilaDesk")],
              link=None, private="مستودع خاص"),
     ],
+    cases_label="دراسات حالة",
+    cases_title="أربع دراسات حالة <em>بصيغة مصرفية</em>",
+    cases_intro="تقارير كاملة مع نماذج Excel الخاصة بها، مكتوبة بالطريقة التي يقدّمها بها فريق مصرفي أو استثماري. الشركات والعملاء افتراضيون، وبيانات السوق حقيقية وموثّقة.",
+    report="التقرير", model="نموذج Excel", pages="صفحة",
+    cases=[
+        dict(kind="تحليل ائتماني", title="مذكرة ائتمانية مصرفية", pdf="case-studies/Bank_Credit_Memo_Yamen_Agha.pdf", xlsx="case-studies/Bank_Credit_Memo_Model.xlsx", n=14,
+             text="قرض لأجل بقيمة 2.4 مليون دولار للمعدات وتسهيل متجدد بقيمة 0.9 مليون دولار لرأس المال العامل لمصنع أغذية في حلب: 25 نسبة مالية، تدفقات خدمة الدين لخمس سنوات، اختبارات ضغط، تقييم الضمانات وتصنيف داخلي. التوصية: موافقة مشروطة.",
+             tags=["أدنى DSCR ‏1.77x", "LTV ‏39.9%", "تصنيف BAC-4"]),
+        dict(kind="تمويل المشاريع", title="دراسة جدوى محطة طاقة شمسية في حلب", pdf="case-studies/Aleppo_Solar_Feasibility_Study_Yamen_Agha.pdf", xlsx="case-studies/Aleppo_Solar_Financial_Model.xlsx", n=36,
+             text="محطة بقدرة 60 ميغاواط تبيع الكهرباء لمصانع مدينة الشيخ نجار الصناعية: التكاليف الرأسمالية، تمويل 60/40 دين وملكية، تسعير عقود الشراء، تحليل الحساسية، محاكاة مونت كارلو ومصفوفة المخاطر.",
+             tags=["NPV ‏9.9 مليون دولار", "IRR ‏20.4%", "LCOE ‏0.0785 دولار", "أدنى DSCR ‏1.91x"]),
+        dict(kind="إدارة الثروات", title="مقترح محفظة استثمارية بقيمة 500 ألف دولار", pdf="case-studies/Portfolio_Proposal_USD500k_Yamen_Agha.pdf", xlsx="case-studies/Portfolio_Proposal_Model.xlsx", n=24,
+             text="تفويض متوسط المخاطر لعشر سنوات لعميل مقيم في الخليج: بيان سياسة الاستثمار، عشرة صناديق ETF حقيقية، تحسين بقيود، اختبار تاريخي 2016–2026، VaR/CVaR وبديل متوافق مع الشريعة.",
+             tags=["عائد مركب 7.54%", "تقلب 8.28%", "أقصى تراجع ‎−17.9%‎"]),
+        dict(kind="بحث", title="انهيار الليرة السورية 2011–2026", pdf="case-studies/Syrian_Pound_Collapse_Research_Yamen_Agha.pdf", xlsx=None, n=65,
+             text="أسعار الصرف الرسمية والموازية، وانتقال أثرها إلى أسعار الغذاء والأجور، وخيارات السياسة، اعتماداً على بيانات WFP وIMF والبنك الدولي ومصرف سورية المركزي ورسوم بيانية بلغة Python.",
+             tags=["خسارة أكثر من 99%", "ذروة العلاوة 256%", "61 مرجعاً"]),
+    ],
     more_title="أعمال أخرى",
     more=[],
     skills_label="المهارات", skills_title="<em>العُدّة</em>",
@@ -312,8 +350,8 @@ AR.update(
                      "Linux / سكربتات Bash والأتمتة", "ICDL"]),
         ("الأنظمة المحاسبية", ["الأمين · البازار · المحتسب", "الرشيد · وكيد",
                                "قيود اليومية ودليل الحسابات", "ميزان المراجعة والتقارير الدورية"]),
-        ("البيانات والذكاء الاصطناعي", ["IBM Cognos", "تنظيف البيانات وسرد القصص بها", "سير عمل بمساعدة نماذج LLM",
-                                         "الأتمتة عبر سطر الأوامر", "بناء وكلاء ذكاء اصطناعي ماليين"]),
+        ("البيانات والتحليل", ["IBM Cognos", "تنظيف البيانات وسرد القصص بها", "التحليل الائتماني — DCSR وLTV".replace("DCSR","DSCR"),
+                                         "تمويل المشاريع — NPV وIRR وLCOE", "تحسين المحافظ وقيمة VaR"]),
     ],
     edu_label="التعليم واللغات",
     edu_school="جامعة حلب", edu_degree="إجازة في الاقتصاد، اختصاص المحاسبة",

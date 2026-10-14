@@ -15,7 +15,7 @@ DSE-trained broker candidate and third-year accounting student, Aleppo.
 
 A personal site designed like a fashion-magazine cover in silver. A monochrome portrait sits in a framed plate, and the head breaks out of the frame. The name is layered around the figure: **YAMEN** in brushed-graphite Playfair Display sits *behind* the portrait, and **AGHA** in an outlined italic sits *in front* of it. Hairline rules, issue numbers ("Vol. 01 — Aleppo, 2026"), vertical side rails and oversized outlined section words carry the editorial look through the rest of the page.
 
-The content mirrors the latest CV (v2): the DSE broker training, the University of Geneva & UBS specialization, accounting ERP work, the five live finance apps and the systems built for the Aleppo stamp club.
+The content mirrors the latest CV (v3): the DSE broker training, the University of Geneva & UBS specialization, accounting ERP work, the five live finance apps, four bank-format case studies (credit memo, solar feasibility study, portfolio proposal, Syrian pound research paper, with report PDFs and Excel models in `case-studies/`) and the systems built for the Aleppo stamp club.
 
 <table>
   <tr>
@@ -58,6 +58,7 @@ templates/            Jinja2 template
 build.py              content for both languages + build script
 assets/css|js|img|fonts
 cv/                   CV PDFs (English, Arabic)
+case-studies/         Case study reports (PDF) and Excel models
 previews/             screenshots used in this README
 tools/screenshot.py   headless-Chrome screenshots
 tools/og.html         source of the social-share image
