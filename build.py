@@ -34,7 +34,7 @@ APPS = [  # live Streamlit apps from github.com/Yasskik/portfolio
 EN = dict(
     lang="en", dir="ltr", root="", alt_href="ar/", alt_label="عربي", alt_lang="ar",
     title="Yamen Agha — Finance & Brokerage | Financial Modeling",
-    description=("Yamen Agha — DSE-trained broker candidate and third-year accounting student in Aleppo, Syria. "
+    description=("Yamen Agha — Accountant at ISOBIT (Al-Qamishli), DSE-trained broker and third-year accounting student, Syria. "
                  "Financial modeling (DCF, three-statement), live finance apps, accounting ERP experience."),
     og_locale="en_US", og_alt="ar_SY",
     skip="Skip to content",
@@ -47,19 +47,20 @@ EN = dict(
     h1="Yamen Agha — Finance, Brokerage & Financial Modeling",
     vol="Vol. 01", edition="Aleppo — 2026", issue_label="The Portfolio Issue",
     kicker="Finance · Brokerage · Financial Modeling",
-    hero_role="DSE-trained broker candidate",
-    hero_lede="Third-year accounting student with hands-on financial modeling (DCF, 3-statement) and accounting ERP experience.",
-    facts=[("Based", "Aleppo, Syria"), ("Status", "Open to traineeships & relocation")],
+    hero_role="Accountant at ISOBIT",
+    hero_lede="DSE-trained broker and third-year accounting student with hands-on financial modeling (DCF, 3-statement) and accounting ERP experience.",
+    facts=[("Based", "Aleppo, Syria"), ("Now", "Accountant — ISOBIT, Al-Qamishli")],
     in_issue="In this issue",
-    cover_lines=[("02", "experience", "Damascus Securities Exchange broker training"),
-                 ("03", "experience", "Investment management with Geneva × UBS"),
+    cover_lines=[("02", "experience", "Now: Accountant at ISOBIT, Al-Qamishli"),
+                 ("03", "experience", "Damascus Securities Exchange broker training"),
                  ("04", "work", "Five live finance apps, built in Python"),
                  ("05", "systems", "Systems built for the Aleppo stamp club")],
     cta_cv="Download CV", cta_contact="Get in touch",
     rail_left="Yamen Muhannad Sulaiman Agha", rail_right="Portfolio · Edition 2026 · Aleppo",
     scroll="Scroll",
     fig1="Fig. 01 — In profile",
-    ticker=[("DSE broker training", "▲", "70+ scenarios", "up"),
+    ticker=[("ISOBIT", "▲", "Accountant · current", "up"),
+            ("DSE broker training", "▲", "70+ scenarios", "up"),
             ("Execution errors", "▼", "0", "down"),
             ("Geneva × UBS", "▲", "Investment management", "up"),
             ("Live finance apps", "▲", "5", "up"),
@@ -71,9 +72,10 @@ EN = dict(
     # About
     about_no="01", about_label="About", about_ghost="PROFILE",
     about_title="Markets, models <em>&amp;</em> the ledger.",
-    about_lead=("DSE-trained broker candidate and third-year accounting student with hands-on financial modeling "
-                "(DCF, 3-statement) and accounting ERP experience; open to traineeships and relocation."),
-    about_body=("I trained as a financial broker with the Damascus Securities Exchange, studied investment management "
+    about_lead=("Accountant at ISOBIT in Al-Qamishli, DSE-trained broker and third-year accounting student with hands-on "
+                "financial modeling (DCF, 3-statement) and accounting ERP experience."),
+    about_body=("I work as an accountant at ISOBIT, where I look after the warehouses and inventory, the books and the "
+                "reports management relies on. Before that I trained as a financial broker with the Damascus Securities Exchange, studied investment management "
                 "with the University of Geneva and UBS on a scholarship, and run full accounting cycles on the ERPs used "
                 "across the region. Alongside my degree I build finance tools in Python and Excel, and each app exports a "
                 "workbook full of live formulas."),
@@ -86,6 +88,12 @@ EN = dict(
     exp_no="02", exp_label="Experience & Training", exp_ghost="EXPERIENCE",
     exp_title="Experience, certifications <em>&amp;</em> training",
     experience=[
+        dict(org="ISOBIT", role="Accountant", date="Oct 2026 – Present", place="Al-Qamishli",
+             bullets=["Manage the company’s warehouses and inventory.",
+                      "Record sales and purchases in the accounting system.",
+                      "Carry out auditing of the accounts.",
+                      "Prepare all financial and management reports.",
+                      "Provide financial advisory to management."]),
         dict(org="Damascus Securities Exchange (DSE)", role="Financial Broker — Training Program",
              date="September 2026", place="Damascus",
              bullets=["Studied market regulations, trading mechanics, order execution, investor advisory and market surveillance.",
@@ -215,8 +223,8 @@ AR = dict(EN)
 AR.update(
     lang="ar", dir="rtl", root="../", alt_href="../", alt_label="EN", alt_lang="en",
     title="يامن آغا — التمويل والوساطة المالية | النمذجة المالية",
-    description=("يامن آغا — مرشّح لمهنة الوسيط المالي متدرّب لدى سوق دمشق للأوراق المالية، وطالب محاسبة في السنة الثالثة "
-                 "في حلب. نمذجة مالية (DCF، القوائم المالية الثلاث) وتطبيقات مالية حيّة."),
+    description=("يامن آغا — محاسب في شركة ISOBIT في القامشلي، ووسيط مالي متدرّب لدى سوق دمشق للأوراق المالية، وطالب محاسبة في السنة الثالثة "
+                 "في جامعة حلب. نمذجة مالية (DCF، القوائم المالية الثلاث) وتطبيقات مالية حيّة."),
     og_locale="ar_SY", og_alt="en_US",
     skip="الانتقال إلى المحتوى",
     nav=[("about", "نبذة"), ("experience", "الخبرات"), ("work", "الأعمال"), ("systems", "الأنظمة"),
@@ -227,19 +235,20 @@ AR.update(
     h1="يامن آغا — التمويل والوساطة والنمذجة المالية",
     vol="العدد ٠١", edition="حلب — ٢٠٢٦", issue_label="عدد معرض الأعمال",
     kicker="التمويل · الوساطة المالية · النمذجة المالية",
-    hero_role="مرشّح لمهنة الوسيط المالي، متدرّب لدى سوق دمشق للأوراق المالية",
-    hero_lede="طالب محاسبة في السنة الثالثة، يمتلك خبرة عملية في النمذجة المالية (DCF، نموذج القوائم المالية الثلاث) وفي أنظمة ERP المحاسبية.",
-    facts=[("المقر", "حلب، سوريا"), ("الحالة", "منفتح على التدريب المهني والانتقال")],
+    hero_role="محاسب – شركة ISOBIT، القامشلي",
+    hero_lede="وسيط مالي متدرّب لدى سوق دمشق للأوراق المالية وطالب محاسبة في السنة الثالثة، يمتلك خبرة عملية في النمذجة المالية (DCF، نموذج القوائم المالية الثلاث) وفي أنظمة ERP المحاسبية.",
+    facts=[("المقر", "حلب، سوريا"), ("حالياً", "محاسب – شركة ISOBIT، القامشلي")],
     in_issue="في هذا العدد",
-    cover_lines=[("٠٢", "experience", "التدريب على الوساطة في سوق دمشق للأوراق المالية"),
-                 ("٠٣", "experience", "إدارة الاستثمار مع جامعة جنيف وبنك UBS"),
+    cover_lines=[("٠٢", "experience", "حالياً: محاسب في شركة ISOBIT، القامشلي"),
+                 ("٠٣", "experience", "التدريب على الوساطة في سوق دمشق للأوراق المالية"),
                  ("٠٤", "work", "خمسة تطبيقات مالية حيّة مبنية بلغة Python"),
                  ("٠٥", "systems", "أنظمة بُنيت لنادي الطوابع في حلب")],
     cta_cv="تحميل السيرة الذاتية", cta_contact="تواصل معي",
     rail_left="يامن مهند سليمان آغا", rail_right="معرض الأعمال · إصدار ٢٠٢٦ · حلب",
     scroll="مرّر",
     fig1="الشكل ٠١ — جانبياً",
-    ticker=[("تدريب الوساطة DSE", "▲", "+70 سيناريو", "up"),
+    ticker=[("ISOBIT", "▲", "محاسب · حالياً", "up"),
+            ("تدريب الوساطة DSE", "▲", "+70 سيناريو", "up"),
             ("أخطاء التنفيذ", "▼", "0", "down"),
             ("جنيف × UBS", "▲", "إدارة الاستثمار", "up"),
             ("تطبيقات مالية حيّة", "▲", "5", "up"),
@@ -249,10 +258,10 @@ AR.update(
             ("الروسية", "▲", "A2", "up"),
             ("جامعة حلب", "▲", "دفعة 2028", "up")],
     about_label="نبذة", about_title="الأسواق، النماذج <em>و</em>الدفاتر.",
-    about_lead=("مرشّح لمهنة الوسيط المالي متدرّب لدى سوق دمشق للأوراق المالية، وطالب محاسبة في السنة الثالثة، يمتلك خبرة "
-                "عملية في النمذجة المالية (DCF، نموذج القوائم المالية الثلاث) وفي أنظمة ERP المحاسبية؛ منفتح على فرص "
-                "التدريب المهني وعلى الانتقال للعمل في مكان آخر."),
-    about_body=("تدرّبت وسيطاً مالياً لدى سوق دمشق للأوراق المالية، ودرست إدارة الاستثمار مع جامعة جنيف وبنك UBS بمنحة "
+    about_lead=("محاسب في شركة ISOBIT في القامشلي، ووسيط مالي متدرّب لدى سوق دمشق للأوراق المالية، وطالب محاسبة في السنة "
+                "الثالثة، يمتلك خبرة عملية في النمذجة المالية (DCF، نموذج القوائم المالية الثلاث) وفي أنظمة ERP المحاسبية."),
+    about_body=("أعمل محاسباً في شركة ISOBIT، حيث أتولّى إدارة المستودعات والمخزون والقيود المحاسبية والتقارير التي تعتمد "
+                "عليها الإدارة. وقبل ذلك تدرّبت وسيطاً مالياً لدى سوق دمشق للأوراق المالية، ودرست إدارة الاستثمار مع جامعة جنيف وبنك UBS بمنحة "
                 "دراسية، وأنفّذ دورات محاسبية كاملة على أنظمة ERP الشائعة في المنطقة. وإلى جانب دراستي أبني أدوات مالية "
                 "بلغة Python وExcel، ويصدّر كل تطبيق ملف Excel مليئاً بالصيغ الحيّة."),
     about_facts=[("الدراسة", "إجازة في الاقتصاد، اختصاص المحاسبة — جامعة حلب، السنة الثالثة"),
@@ -262,6 +271,12 @@ AR.update(
     fig2="الشكل ٠٢ — حلب، ٢٠٢٦",
     exp_label="الخبرات والتدريب", exp_title="الخبرات والشهادات <em>و</em>التدريب",
     experience=[
+        dict(org="شركة ISOBIT", role="محاسب", date="تشرين الأول 2026 – حتى الآن", place="القامشلي",
+             bullets=["إدارة مستودعات الشركة ومخزونها.",
+                      "تسجيل المبيعات والمشتريات في النظام المحاسبي.",
+                      "القيام بأعمال التدقيق على الحسابات.",
+                      "إعداد جميع التقارير المالية والإدارية.",
+                      "تقديم الاستشارات المالية للإدارة."]),
         dict(org="سوق دمشق للأوراق المالية (DSE)", role="وسيط مالي — برنامج تدريبي", date="أيلول 2026", place="دمشق",
              bullets=["دراسة أنظمة السوق، وآليات التداول، وتنفيذ الأوامر، وتقديم المشورة للمستثمرين، والرقابة على السوق.",
                       "اكتساب خبرة عملية في أكثر من 70 سيناريو واقعياً قد يواجهها الوسيط.",

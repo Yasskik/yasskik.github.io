@@ -3,7 +3,7 @@
 # Yamen Agha — Portfolio
 
 **Finance · Brokerage · Financial Modeling**
-DSE-trained broker candidate and third-year accounting student, Aleppo.
+Accountant at ISOBIT (Al-Qamishli), DSE-trained broker and third-year accounting student.
 
 [**yasskik.github.io**](https://yasskik.github.io/) · [النسخة العربية](https://yasskik.github.io/ar/) · [LinkedIn](https://www.linkedin.com/in/yamen-agha-157600288) · [Finance projects](https://github.com/Yasskik/portfolio)
 
