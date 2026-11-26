@@ -1,6 +1,3 @@
-{% set ROMAN = ['I','II','III','IV','V','VI','VII','VIII','IX','X'] %}
-{% set cvfile = root ~ 'cv/Yamen_Agha_CV_' ~ ('AR' if lang == 'ar' else 'EN') ~ '.pdf' %}
-{% set arrow = '←' if dir == 'rtl' else '→' %}
 <!doctype html>
 <html lang="{{ lang }}" dir="{{ dir }}">
 <head>
@@ -9,7 +6,7 @@
 <title>{{ title }}</title>
 <meta name="description" content="{{ description }}">
 <meta name="author" content="Yamen Agha">
-<meta name="theme-color" content="#F8F3E7">
+<meta name="theme-color" content="#007A33">
 <meta name="color-scheme" content="light">
 <link rel="canonical" href="{{ site }}{% if lang == 'ar' %}ar/{% endif %}">
 <link rel="alternate" hreflang="en" href="{{ site }}">
@@ -22,7 +19,7 @@
 <meta property="og:image" content="{{ site }}assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Yamen Agha — engraved banknote portrait">
+<meta property="og:image:alt" content="Yamen Agha — Accountant at ISOBIT, DSE-Trained Broker & Financial Modeling Portfolio">
 <meta property="og:locale" content="{{ og_locale }}">
 <meta property="og:locale:alternate" content="{{ og_alt }}">
 <meta property="profile:first_name" content="Yamen">
@@ -36,10 +33,10 @@
 <link rel="icon" href="{{ root }}assets/img/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="{{ root }}assets/img/apple-touch-icon.png">
 <link rel="manifest" href="{{ root }}site.webmanifest">
-<link rel="preload" href="{{ root }}assets/fonts/EBGaramond-normal-500-latin.woff2" as="font" type="font/woff2" crossorigin>
-{% if lang == 'ar' %}<link rel="preload" href="{{ root }}assets/fonts/IBMPlexSansArabic-normal-400-arabic.woff2" as="font" type="font/woff2" crossorigin>{% endif %}
-<link rel="preload" as="image" href="{{ root }}assets/img/portrait-engraved.webp" imagesrcset="{{ root }}assets/img/portrait-engraved-640.webp 640w, {{ root }}assets/img/portrait-engraved.webp 1008w" imagesizes="(max-width: 760px) 330px, 500px">
-<link rel="stylesheet" href="{{ root }}assets/css/fonts.css">
+<link rel="preload" href="{{ root }}assets/fonts/graduate-5.2.5-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ root }}assets/fonts/IBMPlexSans-400.woff2" as="font" type="font/woff2" crossorigin>
+{% if lang == 'ar' %}<link rel="preload" href="{{ root }}assets/fonts/IBMPlexSansArabic-400.woff2" as="font" type="font/woff2" crossorigin>{% endif %}
+<link rel="preload" as="image" href="{{ root }}assets/img/yamen-circle-trans.png">
 <link rel="stylesheet" href="{{ root }}assets/css/style.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Yamen Agha","alternateName":"{{ name_full }}","url":"{{ site }}","image":"{{ site }}assets/img/og.jpg","email":"mailto:{{ email }}","telephone":"{{ phone_tel }}","jobTitle":"Accountant","worksFor":{"@type":"Organization","name":"ISOBIT","address":{"@type":"PostalAddress","addressLocality":"Al-Qamishli","addressCountry":"SY"}},"address":{"@type":"PostalAddress","addressLocality":"Aleppo","addressCountry":"SY"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Aleppo University"},"knowsLanguage":["ar","en","ru"],"sameAs":["{{ linkedin }}","{{ github }}"]}
@@ -47,236 +44,561 @@
 </head>
 <body class="lang-{{ lang }}">
 <a class="skip" href="#main">{{ skip }}</a>
-<div class="sheet">
-<div class="topbar"><span>Yamen Agha · {{ topbar }}</span><span class="topbar__est">{{ est }}</span><a class="topbar__lang" href="{{ alt_href }}" hreflang="{{ alt_lang }}" lang="{{ alt_lang }}">{{ alt_label }}</a></div>
-<header class="mast" id="top">
-  <nav class="nav nav--start" aria-label="Primary">
-    {% for href, label in nav4[:2] %}<a href="{{ href }}">{{ label }}</a>{% endfor %}
-  </nav>
-  <a class="mast__crest" href="#top" aria-label="Yamen Agha — home"><img src="{{ root }}assets/img/crest.webp" width="104" height="104" alt=""></a>
-  <nav class="nav nav--end" aria-label="Primary, continued">
-    <a href="{{ cvfile }}" download>{{ nav4[2][1] }}</a><a href="{{ nav4[3][0] }}">{{ nav4[3][1] }}</a>
-  </nav>
+
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="shamrock" viewBox="0 0 64 64">
+    <path d="M32 30 C26 16, 17 11, 23 5 C27 1, 32 6, 32 10 C32 6, 37 1, 41 5 C47 11, 38 16, 32 30 Z" fill="currentColor" stroke="#111412" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M30 32 C16 26, 11 17, 5 23 C1 27, 6 32, 10 32 C6 32, 1 37, 5 41 C11 47, 16 38, 30 32 Z" fill="currentColor" stroke="#111412" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M34 32 C48 26, 53 17, 59 23 C63 27, 58 32, 54 32 C58 32, 63 37, 59 41 C53 47, 48 38, 34 32 Z" fill="currentColor" stroke="#111412" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M32 33 C32 45, 36 53, 41 58 L35 59 C31 53, 29 44, 29 33 Z" fill="currentColor" stroke="#111412" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="32" cy="31" r="3" fill="#BA9653" stroke="#111412" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="celtic-knot" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="26" fill="none" stroke="#BA9653" stroke-width="2.5"/>
+    <path d="M32 10 C42 26, 46 38, 18 46 C22 24, 28 16, 32 10 Z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M13 43 C29 35, 42 32, 51 43 C32 51, 22 49, 13 43 Z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M51 43 C39 27, 36 16, 32 10 C22 26, 20 35, 32 52" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="4" fill="#BA9653"/>
+  </symbol>
+  <symbol id="basketball" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="27" fill="#D27A2C" stroke="#111412" stroke-width="3"/>
+    <path d="M5 32 H59 M32 5 V59" stroke="#111412" stroke-width="2.5" fill="none"/>
+    <path d="M13 13 C24 22, 24 42, 13 51 M51 13 C40 22, 40 42, 51 51" stroke="#111412" stroke-width="2.5" fill="none"/>
+  </symbol>
+  <symbol id="center-court-emblem" viewBox="0 0 80 80">
+    <circle cx="40" cy="40" r="36" fill="#FAF6ED" stroke="#007A33" stroke-width="4"/>
+    <circle cx="40" cy="40" r="28" fill="none" stroke="#BA9653" stroke-width="2"/>
+    <line x1="4" y1="40" x2="76" y2="40" stroke="#111412" stroke-width="2"/>
+    <circle cx="40" cy="40" r="10" fill="#007A33" stroke="#111412" stroke-width="2"/>
+    <circle cx="40" cy="40" r="3.5" fill="#BA9653"/>
+  </symbol>
+</svg>
+
+<div class="topbar-stripe" aria-hidden="true"></div>
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top">
+      <svg class="brand__crest" style="color:var(--green)" aria-hidden="true"><use href="#shamrock"/></svg>
+      <span class="brand__name">Yamen Agha</span>
+    </a>
+    <ul class="nav__links">
+      {% for href, label in nav_celtics %}
+      <li><a href="{{ href }}">{{ label }}</a></li>
+      {% endfor %}
+    </ul>
+    <div class="nav__end">
+      <a class="nav__lang" href="{{ alt_href }}" lang="{{ alt_lang }}" hreflang="{{ alt_lang }}">{{ alt_label }}</a>
+      <a class="btn btn--small" data-cv-burst href="{{ root }}cv/Yamen_Agha_CV_{{ 'AR' if lang == 'ar' else 'EN' }}.pdf" download>{{ cv_short }}</a>
+    </div>
+  </div>
 </header>
-<div class="rule2" aria-hidden="true"></div>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-title">
-  <h1 class="sr-only" id="hero-title">{{ h1 }}</h1>
-  <div class="hero__start">
-    <p class="sc">{{ kicker }}</p>
-    <p class="hero__role">{{ hero_role }}</p>
-    <p class="hero__lede">{{ hero_lede }}</p>
-    <div class="btns">
-      <a class="btn btn--ink" href="{{ cvfile }}" download>{{ cta_cv }} <span aria-hidden="true">↓</span></a>
-      <a class="btn btn--line" href="#contact">{{ cta_contact }} <span aria-hidden="true">{{ arrow }}</span></a>
-    </div>
-  </div>
-  <div class="stage" aria-hidden="true">
-    <img class="stage__oval" src="{{ root }}assets/img/guil-oval.webp" width="600" height="800" alt="" decoding="async">
-    <span class="name name--back">YAMEN</span>
-    <img class="stage__fig" src="{{ root }}assets/img/portrait-engraved.webp" srcset="{{ root }}assets/img/portrait-engraved-640.webp 640w, {{ root }}assets/img/portrait-engraved.webp 1008w" sizes="(max-width: 760px) 330px, 500px" width="1008" height="1792" alt="" fetchpriority="high" decoding="async">
-    <span class="name name--front">AGHA</span>
-  </div>
-  <dl class="hero__end">
-    {% for k, v in facts %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
-    <div><dt>{{ facts3[0] }}</dt><dd>{{ facts3[1] }}</dd></div>
-  </dl>
-</section>
+  <!-- HERO: Jumbotron Scoreboard over Parquet Floor -->
+  <section class="hero parquet-band" id="top">
+    <div class="wrap">
+      <div class="jumbotron">
+        <div class="jumbo__bar">
+          <span>{{ jumbo_left }}</span>
+          <span class="jumbo__bar-mid">
+            <svg width="18" height="18" style="color:var(--gold-bright)" aria-hidden="true"><use href="#shamrock"/></svg>
+            {{ jumbo_mid }}
+            <svg width="18" height="18" style="color:var(--gold-bright)" aria-hidden="true"><use href="#shamrock"/></svg>
+          </span>
+          <span>{{ jumbo_right }}</span>
+        </div>
 
-{% macro divider() %}<div class="divider" aria-hidden="true"><i></i><img src="{{ root }}assets/img/crest-ink.webp" width="64" height="64" alt="" loading="lazy"><i></i></div>{% endmacro %}
-{% macro head(no, label, title) %}
-<header class="sec-head">
-  <p class="sc">§ {{ no }} · {{ label }}</p>
-  <h2>{{ title | safe }}</h2>
-</header>
-{% endmacro %}
-{% macro seal() %}<img class="seal" src="{{ root }}assets/img/seal-wax.webp" width="104" height="104" alt="" loading="lazy">{% endmacro %}
+        <div class="jumbo__grid">
+          <div class="jumbo__side">
+            <div class="jersey-stat">
+              <span class="jersey-stat__num" data-count="70" data-suffix="+">70+</span>
+              <span class="jersey-stat__label">{{ stat1_lbl }}</span>
+              <span class="jersey-stat__sub">{{ stat1_sub }}</span>
+            </div>
+            <div class="jersey-stat">
+              <span class="jersey-stat__num" data-count="0">0</span>
+              <span class="jersey-stat__label">{{ stat2_lbl }}</span>
+              <span class="jersey-stat__sub">{{ stat2_sub }}</span>
+            </div>
+          </div>
 
-{{ divider() }}
-<section class="sec about" id="about">
-  {{ head(about_no, about_label, about_title) }}
-  <div class="about__grid">
-    <div class="about__text">
-      <p class="about__lead">{{ about_lead }}</p>
-      <p>{{ about_body }}</p>
-    </div>
-    <dl class="ledger">
-      {% for k, v in about_facts %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}
-    </dl>
-  </div>
-</section>
-
-{{ divider() }}
-<section class="sec exp" id="experience">
-  {{ head(exp_no, exp_label, exp_title) }}
-  <ol class="exp__list">
-    {% for e in experience %}
-    <li class="exp__item">
-      <span class="exp__num" aria-hidden="true">{{ ROMAN[loop.index0] }}</span>
-      <div class="exp__head">
-        <h3>{{ e.org }}</h3>
-        <p class="exp__role">{{ e.role }}</p>
-        <p class="exp__when">{{ e.date }}{% if e.place %} · {{ e.place }}{% endif %}</p>
-      </div>
-      <ul class="exp__bullets">{% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}</ul>
-    </li>
-    {% endfor %}
-  </ol>
-</section>
-
-{{ divider() }}
-<section class="sec work" id="work">
-  {{ head(work_no, work_label, work_title) }}
-  <p class="sec-intro">{{ work_intro }}</p>
-  <div class="certs">
-    {% for a in apps_list %}{% set t = apps[a.key] %}
-    <article class="cert{% if loop.first %} cert--wide{% endif %}">
-      <div class="cert__in">
-        <div class="cert__top"><span class="serial">{{ serial }} YA·2026·{{ '%04d' % loop.index }}</span><span class="sc">{{ t[1] }}</span><span class="serial serial--2" aria-hidden="true">{{ serial }} YA·2026·{{ '%04d' % loop.index }}</span></div>
-        <p class="cert__no" aria-hidden="true">{{ ROMAN[loop.index0] }}</p>
-        <h3>{{ t[0] }}</h3>
-        <div class="cert__body">
-          <a class="cert__shot" href="{{ a.live }}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="{{ root }}assets/img/{{ a.img }}" width="1200" height="750" alt="" loading="lazy" decoding="async"></a>
-          <div class="cert__copy">
-            <p class="cert__text">{{ t[2] }}</p>
-            <p class="tags">{% for g in t[3] %}<span>{{ g }}</span>{% endfor %}</p>
-            <div class="cert__foot">
-              <div class="btns">
-                <a class="btn btn--ink" href="{{ a.live }}" target="_blank" rel="noopener">{{ live }} <span aria-hidden="true">↗</span><span class="sr-only"> — {{ t[0] }}</span></a>
-                <a class="btn btn--line" href="{{ a.code }}" target="_blank" rel="noopener">{{ code }} <span aria-hidden="true">↗</span><span class="sr-only"> — {{ t[0] }}</span></a>
+          <div class="jumbo__center">
+            <div class="portrait-crest">
+              <svg class="shamrock-wing" aria-hidden="true"><use href="#shamrock"/></svg>
+              <div class="portrait-ring">
+                <img src="{{ root }}assets/img/yamen-circle-trans.png" width="800" height="800" alt="Yamen Agha">
               </div>
-              {{ seal() }}
+              <svg class="shamrock-wing" aria-hidden="true"><use href="#shamrock"/></svg>
             </div>
-          </div>
-        </div>
-      </div>
-    </article>
-    {% endfor %}
-  </div>
-
-  <div class="panel excel">
-    <p class="sc">{{ excel_title }}</p>
-    <ol>{% for x in excel_items %}<li>{{ x }}</li>{% endfor %}</ol>
-    <a class="btn btn--line" href="{{ portfolio_repo }}/tree/main/finance" target="_blank" rel="noopener">{{ excel_link }} <span aria-hidden="true">↗</span></a>
-  </div>
-
-  <div class="cases" id="case-studies">
-    <p class="sc c">{{ cases_label }}</p>
-    <h3 class="cases__title">{{ cases_title|safe }}</h3>
-    <p class="sec-intro">{{ cases_intro }}</p>
-    <div class="certs certs--cases">
-      {% for c in cases %}
-      <article class="cert cert--case">
-        <div class="cert__in">
-          <div class="cert__top"><span class="serial">{{ serial }} CS·{{ '%03d' % loop.index }}</span><span class="sc">{{ c.kind }}</span><span class="serial serial--2" aria-hidden="true">{{ c.n }} {{ pages }}</span></div>
-          <h4>{{ c.title }}</h4>
-          <p class="cert__text">{{ c.text }}</p>
-          <p class="tags">{% for g in c.tags %}<span>{{ g }}</span>{% endfor %}</p>
-          <div class="btns">
-            <a class="btn btn--ink" href="{{ root }}{{ c.pdf }}" target="_blank" rel="noopener">{{ report }} · PDF <span aria-hidden="true">↓</span><span class="sr-only"> — {{ c.title }}, {{ c.n }} {{ pages }}</span></a>
-            {% if c.xlsx %}<a class="btn btn--line" href="{{ root }}{{ c.xlsx }}" download>{{ model }} <span aria-hidden="true">↓</span><span class="sr-only"> — {{ c.title }}</span></a>{% endif %}
-          </div>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-{{ divider() }}
-<section class="sec systems" id="systems">
-  {{ head(sys_no, sys_label, sys_title) }}
-  <p class="sec-intro">{{ sys_intro }}</p>
-  {% for s in systems %}
-  <article class="cert cert--sys">
-    <div class="cert__in">
-      <div class="cert__top"><span class="serial">{{ serial }} YA·CLUB·{{ '%02d' % loop.index }}</span><span class="sc">{{ s.kind }}</span><span class="serial serial--2" aria-hidden="true">{{ serial }} YA·CLUB·{{ '%02d' % loop.index }}</span></div>
-      <div class="sys">
-        <div class="sys__phones">
-          {% for src, alt in s.imgs %}<figure class="phone"><img src="{{ root }}assets/img/{{ src }}" width="600" height="1298" alt="{{ alt }}" loading="lazy" decoding="async"></figure>{% endfor %}
-        </div>
-        <div class="sys__text">
-          <h3>{{ s.name }}</h3>
-          <p class="cert__text">{{ s.text }}</p>
-          <ul class="sys__points">{% for p in s.points %}<li>{{ p }}</li>{% endfor %}</ul>
-          <p class="sys__tech">{{ s.tech }}</p>
-          <div class="cert__foot">
+            <p class="hero__kicker">{{ kicker }}</p>
+            <h1>
+              <span class="hero__name">Yamen Agha</span>
+              <span class="sr-only"> — {{ kicker }}</span>
+            </h1>
+            <p class="hero__role">{{ hero_role_display }}</p>
+            <p class="hero__lede">{{ hero_lede }}</p>
+            <p class="hero__loc">{{ hero_location }}</p>
             <div class="btns">
-              {% if s.link %}<a class="btn btn--ink" href="{{ s.link[1] }}" target="_blank" rel="noopener">{{ s.link[0] }} <span aria-hidden="true">↗</span></a>{% endif %}
-              <span class="pill">{{ s.private }}</span>
+              <a class="btn" data-cv-burst href="{{ root }}cv/Yamen_Agha_CV_{{ 'AR' if lang == 'ar' else 'EN' }}.pdf" download>{{ cta_cv }}</a>
+              <a class="btn btn--line" href="#contact">{{ cta_contact }}</a>
             </div>
-            {{ seal() }}
           </div>
+
+          <div class="jumbo__side">
+            <div class="jersey-stat">
+              <span class="jersey-stat__num" data-count="5">5</span>
+              <span class="jersey-stat__label">{{ stat3_lbl }}</span>
+              <span class="jersey-stat__sub">{{ stat3_sub }}</span>
+            </div>
+            <div class="jersey-stat">
+              <span class="jersey-stat__num" data-count="4">4</span>
+              <span class="jersey-stat__label">{{ stat4_lbl }}</span>
+              <span class="jersey-stat__sub">{{ stat4_sub }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="scoreboard-strip">
+          {% for val, lbl in sb_strip %}
+          <div class="sb-cell">
+            <span class="sb-cell__val">{{ val }}</span>
+            <span class="sb-cell__lbl">{{ lbl }}</span>
+          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
-  </article>
-  {% endfor %}
-</section>
+  </section>
 
-{{ divider() }}
-<section class="sec skills" id="skills">
-  {{ head(skills_no, skills_label, skills_title) }}
-  <div class="skills__grid">
-    {% for group, items in skills %}
-    <div class="skill"><p class="skill__no" aria-hidden="true">{{ ROMAN[loop.index0] }}</p><h3>{{ group }}</h3><ul>{% for i in items %}<li>{{ i }}</li>{% endfor %}</ul></div>
-    {% endfor %}
-  </div>
-</section>
+  <!-- 01 ABOUT + RETIRED NUMBERS / TROPHY CASE -->
+  <section class="section section--white" id="about">
+    <div class="wrap">
+      <div class="rafter-head reveal">
+        <div class="rafter-bar" aria-hidden="true"></div>
+        <div class="banner-pennant">
+          <span class="banner-pennant__no">{{ banner_word }} 01</span>
+          <span class="banner-pennant__lbl">{{ about_label }}</span>
+        </div>
+        <h2 class="section__title">{{ about_title }}</h2>
+      </div>
 
-{{ divider() }}
-<section class="sec edu" id="education">
-  {{ head(edu_no, edu_label, edu_school) }}
-  <div class="edu__grid">
-    <div class="panel">
-      <p class="edu__degree">{{ edu_degree }}</p>
-      <p class="edu__meta">{{ edu_year }} · {{ edu_place }} · {{ edu_grad_label }} {{ edu_grad }}</p>
-      <p class="sc">{{ edu_course_label }}</p>
-      <p class="tags tags--lg">{% for c in courses %}<span>{{ c }}</span>{% endfor %}</p>
-    </div>
-    <div class="panel">
-      <p class="sc">{{ lang_title }}</p>
-      <ul class="langs">
-        {% for script, name, level, pct, code in languages %}
-        <li><span class="langs__script" lang="{{ code }}">{{ script }}</span><span class="langs__name">{{ name }}</span><span class="langs__level">{{ level }}</span></li>
+      <div class="trophy-case reveal" aria-label="{{ trophy_aria }}">
+        {% for num, org, desc in trophies %}
+        <div class="retired-jersey">
+          <span class="retired-jersey__no">{{ num }}</span>
+          <span class="retired-jersey__org">{{ org }}</span>
+          <span class="retired-jersey__desc">{{ desc }}</span>
+        </div>
         {% endfor %}
-      </ul>
-    </div>
-  </div>
-</section>
+      </div>
 
-<section class="contact" id="contact">
-  <div class="letter">
-    <div class="letter__band" aria-hidden="true"></div>
-    <img class="letter__crest" src="{{ root }}assets/img/crest.webp" width="110" height="110" alt="" loading="lazy">
-    <p class="sc">§ {{ contact_no }} · {{ contact_kicker }}</p>
-    <h2>{{ contact_title|safe }}</h2>
-    <p class="letter__text">{{ contact_text }} {{ letter_close }}</p>
-    <a class="letter__email" href="mailto:{{ email }}" dir="ltr">{{ email }}</a>
-    <div class="btns btns--c">
-      <a class="btn btn--ink" href="mailto:{{ email }}">{{ contact_rows[0][0] }} <span aria-hidden="true">✉</span></a>
-      <a class="btn btn--line" href="{{ linkedin }}" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
-      <a class="btn btn--line" href="{{ github }}" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+      <div class="about-box reveal">
+        <div>
+          <p class="about__lead">{{ about_lead }}</p>
+          <p class="about__body">{{ about_body }}</p>
+        </div>
+        <aside class="scout-card">
+          <div class="scout-card__head">{{ profile_card_head }}</div>
+          <dl class="facts">
+            {% for k, v in about_facts %}
+            <li><dt>{{ k }}</dt><dd>{{ v }}</dd></li>
+            {% endfor %}
+          </dl>
+        </aside>
+      </div>
     </div>
-    <div class="btns btns--c">
-      <a class="btn btn--line" href="{{ root }}cv/Yamen_Agha_CV_EN.pdf" download>{{ cv_en }} <span aria-hidden="true">↓</span></a>
-      <a class="btn btn--line" href="{{ root }}cv/Yamen_Agha_CV_AR.pdf" download>{{ cv_ar }} <span aria-hidden="true">↓</span></a>
+  </section>
+
+  <!-- 02 SEASON TIMELINE + HANGING CHAMPIONSHIP BANNERS -->
+  <section class="section parquet-band" id="experience">
+    <div class="wrap">
+      <div class="rafter-head reveal">
+        <div class="rafter-bar" aria-hidden="true"></div>
+        <div class="banner-pennant">
+          <span class="banner-pennant__no">{{ banner_word }} 02</span>
+          <span class="banner-pennant__lbl">{{ exp_label }}</span>
+        </div>
+        <h2 class="section__title">{{ exp_title }}</h2>
+        <p class="section__intro">{{ season_intro }}</p>
+      </div>
+
+      <div class="season-court reveal">
+        <div class="court-axis">
+          <div class="court-spine" aria-hidden="true"></div>
+          {% for job in experience %}
+          <article class="season-stop reveal">
+            <div class="season-stop__node" aria-hidden="true">
+              <svg><use href="#basketball"/></svg>
+              <span class="season-stop__no">0{{ loop.index }}</span>
+            </div>
+            <div class="season-card">
+              <div class="season-card__meta">
+                <span>{{ job.date }}</span>
+                {% if job.place %}<span>{{ job.place }}</span>{% endif %}
+              </div>
+              <h3 class="job__role">{{ job.role }}</h3>
+              <p class="job__org">{{ job.org }}</p>
+              <ul class="job__points">
+                {% for b in job.bullets %}<li>{{ b }}</li>{% endfor %}
+              </ul>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="rafters-wrap reveal">
+        <h3 class="rafters-title">{{ rafters_title }}</h3>
+        <p class="rafters-sub">{{ rafters_sub }}</p>
+        <div class="rafter-beam" aria-hidden="true"></div>
+        <div class="champ-rafters">
+          {% for b in banners %}
+          <div class="champ-banner">
+            <button
+              type="button"
+              class="champ-banner__btn"
+              aria-expanded="{{ 'true' if loop.first else 'false' }}"
+              data-title="{{ b.title }}"
+              data-sub="{{ b.sub }}"
+              data-meta="{{ b.meta }}"
+              data-bullets='{{ b.bullets | tojson }}'
+            >
+              <span class="champ-banner__yr">{{ b.yr }}</span>
+              <span class="champ-banner__name">{{ b.short }}</span>
+              <span class="champ-banner__cue">{{ inspect_cue }}</span>
+            </button>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="banner-detail" id="banner-detail-panel">
+          <p class="banner-detail__meta">{{ banners[0].meta }}</p>
+          <h4 class="banner-detail__title">{{ banners[0].title }} — {{ banners[0].sub }}</h4>
+          <ul class="banner-detail__list">
+            {% for pt in banners[0].bullets %}<li>{{ pt }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
     </div>
-    <dl class="letter__rows">
-      {% for k, v, href in contact_rows %}<div><dt>{{ k }}</dt><dd>{% if href %}<a href="{{ href }}"{% if href.startswith('http') %} target="_blank" rel="noopener"{% endif %} dir="ltr">{{ v }}</a>{% else %}{{ v }}{% endif %}</dd></div>{% endfor %}
-    </dl>
-    <p class="sig" dir="ltr">{{ sign }}</p>
-    <div class="letter__band" aria-hidden="true"></div>
-  </div>
-</section>
+  </section>
+
+  <!-- 03 PROJECTS & SYSTEMS: TRADING CARDS WITH FLIP & FILTER CHIPS -->
+  <section class="section section--white" id="work">
+    <div class="wrap">
+      <div class="rafter-head reveal">
+        <div class="rafter-bar" aria-hidden="true"></div>
+        <div class="banner-pennant">
+          <span class="banner-pennant__no">{{ banner_word }} 03</span>
+          <span class="banner-pennant__lbl">{{ work_label }}</span>
+        </div>
+        <h2 class="section__title">{{ work_title }}</h2>
+        <p class="section__intro">{{ work_intro }}</p>
+      </div>
+
+      <div class="filter-bar reveal" role="group" aria-label="{{ filter_aria }}">
+        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">{{ filter_all }}</button>
+        <button type="button" class="filter-chip" data-filter="finance" aria-pressed="false">{{ filter_finance }}</button>
+        <button type="button" class="filter-chip" data-filter="systems" aria-pressed="false">{{ filter_systems }}</button>
+      </div>
+
+      <div class="trade-grid">
+        {% for app in apps_list %}
+        {% set copy = apps[app.key] %}
+        <article class="trade-card reveal" data-cat="finance">
+          <div class="trade-card__inner">
+            <div class="trade-face trade-face--front">
+              <div class="trade-top">
+                <span class="trade-top__kind">{{ copy[1] }}</span>
+                <span class="trade-top__no">#0{{ loop.index }}</span>
+              </div>
+              <div class="trade-media">
+                <img src="{{ root }}assets/img/{{ app.img }}" width="1200" height="750" alt="{{ copy[0] }}" loading="lazy">
+              </div>
+              <div class="trade-front-foot">
+                <h3 class="trade-title">{{ copy[0] }}</h3>
+                <div class="trade-front-row">
+                  <span class="tags">{{ copy[3] | join(' · ') }}</span>
+                  <button type="button" class="flip-toggle" aria-pressed="false">{{ flip_cue }}</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="trade-face trade-face--back">
+              <div>
+                <div class="trade-back-head">
+                  <span class="trade-back-kicker">{{ copy[1] }}</span>
+                  <button type="button" class="flip-toggle" aria-pressed="false">{{ flip_back_cue }}</button>
+                </div>
+                <h3 class="trade-title">{{ copy[0] }}</h3>
+                <p class="trade-back-body">{{ copy[2] }}</p>
+                <ul class="trade-back-points">
+                  {% for t in copy[3] %}<li>{{ t }}</li>{% endfor %}
+                </ul>
+              </div>
+              <div class="btns">
+                <a class="btn btn--small" href="{{ app.live }}" target="_blank" rel="noopener">{{ live }}</a>
+                <a class="btn btn--small btn--line" href="{{ app.code }}" target="_blank" rel="noopener">{{ code }}</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+
+        {% for s in systems %}
+        <article class="trade-card reveal" id="{{ 'systems' if loop.first else 'systems-' ~ loop.index }}" data-cat="systems">
+          <div class="trade-card__inner">
+            <div class="trade-face trade-face--front">
+              <div class="trade-top">
+                <span class="trade-top__kind">{{ s.kind }}</span>
+                <span class="trade-top__no">#0{{ loop.index + 5 }}</span>
+              </div>
+              <div class="trade-media trade-media--phones">
+                {% for src, cap in s.imgs %}
+                <img src="{{ root }}assets/img/{{ src }}" width="600" height="1298" alt="{{ cap }}" loading="lazy">
+                {% endfor %}
+              </div>
+              <div class="trade-front-foot">
+                <h3 class="trade-title">{{ s.name }}</h3>
+                <div class="trade-front-row">
+                  <span class="tags">{{ s.tech }}</span>
+                  <button type="button" class="flip-toggle" aria-pressed="false">{{ flip_cue }}</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="trade-face trade-face--back">
+              <div>
+                <div class="trade-back-head">
+                  <span class="trade-back-kicker">{{ s.kind }}</span>
+                  <button type="button" class="flip-toggle" aria-pressed="false">{{ flip_back_cue }}</button>
+                </div>
+                <h3 class="trade-title">{{ s.name }}</h3>
+                <p class="trade-back-body">{{ s.text }}</p>
+                <ul class="trade-back-points">
+                  {% for pt in s.points %}<li>{{ pt }}</li>{% endfor %}
+                </ul>
+                <p class="tags">{{ s.tech }}{% if s.private %} · {{ s.private }}{% endif %}</p>
+              </div>
+              <div class="btns">
+                {% if s.link %}
+                <a class="btn btn--small btn--gold" href="{{ s.link[1] }}" target="_blank" rel="noopener">{{ s.link[0] }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+
+      <div class="knot-divider" aria-hidden="true">
+        <svg><use href="#celtic-knot"/></svg>
+      </div>
+
+      <!-- 04 CASE STUDIES AS BOX SCORE TABLE WITH TABS -->
+      <div class="rafter-head reveal" id="cases">
+        <div class="rafter-bar" aria-hidden="true"></div>
+        <div class="banner-pennant">
+          <span class="banner-pennant__no">{{ banner_word }} 04</span>
+          <span class="banner-pennant__lbl">{{ cases_label }}</span>
+        </div>
+        <h2 class="section__title">{{ cases_title }}</h2>
+        <p class="section__intro">{{ cases_intro }}</p>
+      </div>
+
+      <div class="box-tabs reveal" role="tablist" aria-label="{{ cases_label }}">
+        <button type="button" class="box-tab is-active" role="tab" aria-selected="true" data-tab="all">{{ tab_all }}</button>
+        <button type="button" class="box-tab" role="tab" aria-selected="false" data-tab="credit-project">{{ tab_credit }}</button>
+        <button type="button" class="box-tab" role="tab" aria-selected="false" data-tab="wealth-macro">{{ tab_wealth }}</button>
+      </div>
+
+      <div class="box-score-shell reveal">
+        <table class="box-table">
+          <thead>
+            <tr>
+              <th>{{ col_study }}</th>
+              <th>{{ col_metrics }}</th>
+              <th>{{ col_pages }}</th>
+              <th>{{ col_files }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for c in cases %}
+            {% set grp = 'credit-project' if loop.index0 < 2 else 'wealth-macro' %}
+            <tr class="box-row{{ ' is-open' if loop.first else '' }}" data-group="{{ grp }}">
+              <td>
+                <span class="box-row__kind">{{ c.kind }}</span>
+                <span class="box-row__title">{{ c.title }}</span>
+              </td>
+              <td>
+                {% for t in c.tags %}<span class="box-metric-pill">{{ t }}</span>{% endfor %}
+              </td>
+              <td><strong>{{ c.n }}</strong> {{ pages }}</td>
+              <td>
+                <div class="btns" style="gap:0.4rem">
+                  <button type="button" class="box-expand-btn" aria-expanded="{{ 'true' if loop.first else 'false' }}">{{ summary_cue }}</button>
+                  <a class="btn btn--small" href="{{ root }}{{ c.pdf }}">{{ report }}</a>
+                  {% if c.xlsx %}<a class="btn btn--small btn--line" href="{{ root }}{{ c.xlsx }}">{{ model }}</a>{% endif %}
+                </div>
+              </td>
+            </tr>
+            <tr class="box-detail" data-group="{{ grp }}"{% if not loop.first %} hidden{% endif %}>
+              <td colspan="4">
+                <div class="box-detail__wrap">
+                  <p class="box-detail__text">{{ c.text }}</p>
+                  <div class="btns">
+                    <a class="btn btn--small" href="{{ root }}{{ c.pdf }}">{{ report }} ({{ c.n }} {{ pages }})</a>
+                    {% if c.xlsx %}<a class="btn btn--small btn--gold" href="{{ root }}{{ c.xlsx }}">{{ model }}</a>{% endif %}
+                  </div>
+                </div>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="excel-bar reveal">{{ excel_title }}: {{ excel_items | join(' · ') }}.
+        <a href="{{ portfolio_repo }}/tree/main/finance/" target="_blank" rel="noopener">{{ excel_link }}</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 05 SKILLS STAT SHEET + INTERACTIVE HALF-COURT SHOT CHART -->
+  <section class="section parquet-band" id="skills">
+    <div class="wrap">
+      <div class="rafter-head reveal">
+        <div class="rafter-bar" aria-hidden="true"></div>
+        <div class="banner-pennant">
+          <span class="banner-pennant__no">{{ banner_word }} 05</span>
+          <span class="banner-pennant__lbl">{{ skills_label }}</span>
+        </div>
+        <h2 class="section__title">{{ skills_title }}</h2>
+      </div>
+
+      <div class="analytics-grid reveal">
+        <div class="shot-panel">
+          <h3 class="panel-head">{{ shot_chart_title }}</h3>
+          <div class="shot-court-box">
+            <svg class="shot-svg" viewBox="0 0 400 280" role="img" aria-label="{{ shot_chart_title }}">
+              <rect x="4" y="4" width="392" height="272" fill="#FAF6ED" stroke="#111412" stroke-width="3"/>
+              <path d="M36 4 V115 C36 225, 364 225, 364 115 V4" fill="none" stroke="#007A33" stroke-width="3"/>
+              <rect x="132" y="4" width="136" height="150" fill="#EFE6D2" stroke="#007A33" stroke-width="2.5"/>
+              <circle cx="200" cy="154" r="46" fill="none" stroke="#BA9653" stroke-width="2"/>
+              <line x1="168" y1="22" x2="232" y2="22" stroke="#111412" stroke-width="4"/>
+              <circle cx="200" cy="34" r="10" fill="none" stroke="#BA9653" stroke-width="3"/>
+              <g>
+                <rect x="148" y="66" width="104" height="34" rx="4" fill="#007A33" stroke="#111412" stroke-width="2"/>
+                <text x="200" y="88" text-anchor="middle" fill="#FFFFFF" font-family="Barlow Condensed,Cairo,sans-serif" font-weight="700" font-size="14">01 · {{ shot_zones[0].short }}</text>
+              </g>
+              <g>
+                <rect x="14" y="138" width="106" height="34" rx="4" fill="#FFFFFF" stroke="#007A33" stroke-width="2"/>
+                <text x="67" y="160" text-anchor="middle" fill="#111412" font-family="Barlow Condensed,Cairo,sans-serif" font-weight="700" font-size="14">02 · {{ shot_zones[1].short }}</text>
+              </g>
+              <g>
+                <rect x="280" y="138" width="106" height="34" rx="4" fill="#FFFFFF" stroke="#007A33" stroke-width="2"/>
+                <text x="333" y="160" text-anchor="middle" fill="#111412" font-family="Barlow Condensed,Cairo,sans-serif" font-weight="700" font-size="14">03 · {{ shot_zones[2].short }}</text>
+              </g>
+              <g>
+                <rect x="128" y="222" width="144" height="34" rx="4" fill="#BA9653" stroke="#111412" stroke-width="2"/>
+                <text x="200" y="244" text-anchor="middle" fill="#111412" font-family="Barlow Condensed,Cairo,sans-serif" font-weight="700" font-size="14">04 · {{ shot_zones[3].short }}</text>
+              </g>
+            </svg>
+          </div>
+          <div class="shot-zone-btns">
+            {% for z in shot_zones %}
+            <button type="button" class="shot-zone{{ ' is-active' if loop.first else '' }}" data-zone="{{ z.id }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
+              <span class="shot-zone__name">{{ z.title }}</span>
+              <span class="shot-zone__cnt">{{ z.count }}</span>
+            </button>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="stat-panel">
+          <h3 class="panel-head">{{ stat_sheet_title }}</h3>
+          <div class="skill-stat-grid">
+            {% for title, items in skills %}
+            <div class="skill-stat-card{{ ' is-active' if loop.first else '' }}" data-zone="z{{ loop.index }}">
+              <h3>{{ title }}</h3>
+              <ul>{% for it in items %}<li>{{ it }}</li>{% endfor %}</ul>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="edu-lang-grid reveal">
+        <div class="stat-panel">
+          <h3 class="panel-head">{{ edu_label }}</h3>
+          <p class="edu__school">{{ edu_school }}</p>
+          <p class="edu__degree">{{ edu_degree }}</p>
+          <p class="edu__meta">{{ edu_year }} · {{ edu_grad_label }} <span class="ltr">{{ edu_grad }}</span> · {{ edu_place }}</p>
+          <p><strong>{{ edu_course_label }}</strong></p>
+          <ul class="courses">{% for c in courses %}<li>{{ c }}</li>{% endfor %}</ul>
+        </div>
+
+        <div class="stat-panel">
+          <h3 class="panel-head">{{ lang_title }}</h3>
+          <ul class="langs">
+            {% for native, name, level, pct, _code in languages %}
+            <li>
+              <div class="lang-row__top"><span>{{ name }}</span><span>{{ level }}</span></div>
+              <div class="lang-bar"><div class="lang-bar__fill" style="width:{{ pct }}%"></div></div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 CENTER-COURT CONTACT -->
+  <section class="section section--white" id="contact">
+    <div class="wrap">
+      <div class="rafter-head reveal">
+        <div class="rafter-bar" aria-hidden="true"></div>
+        <div class="banner-pennant">
+          <span class="banner-pennant__no">{{ banner_word }} 06</span>
+          <span class="banner-pennant__lbl">{{ contact_label }}</span>
+        </div>
+        <h2 class="section__title">{{ contact_title }}</h2>
+      </div>
+
+      <div class="center-court reveal">
+        <svg class="center-court__ring" aria-hidden="true"><use href="#center-court-emblem"/></svg>
+        <p class="contact__text">{{ contact_text }}</p>
+        <a class="contact__email" href="mailto:{{ email }}">{{ email }}</a>
+        <div class="btns">
+          <a class="btn" href="mailto:{{ email }}">{{ email_cta }}</a>
+          <a class="btn btn--line" href="{{ linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn--line" href="{{ github }}" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="btns">
+          <a class="btn btn--gold" data-cv-burst href="{{ root }}cv/Yamen_Agha_CV_EN.pdf" download>{{ cv_en }}</a>
+          <a class="btn btn--line" data-cv-burst href="{{ root }}cv/Yamen_Agha_CV_AR.pdf" download>{{ cv_ar }}</a>
+        </div>
+        <dl class="rows">
+          {% for k, v, href in contact_rows %}
+          <div>
+            <dt>{{ k }}</dt>
+            <dd>{% if href %}<a href="{{ href }}"{% if href.startswith('http') %} target="_blank" rel="noopener"{% endif %} class="ltr">{{ v }}</a>{% else %}{{ v }}{% endif %}</dd>
+          </div>
+          {% endfor %}
+        </dl>
+      </div>
+    </div>
+  </section>
 </main>
 
+<a class="bball-top" id="back-to-top" href="#top" aria-label="{{ back_top }}" title="{{ back_top }}">
+  <svg aria-hidden="true"><use href="#basketball"/></svg>
+</a>
+
 <footer class="foot">
-  <span>© {{ year }} Yamen Agha · {{ edu_place }}</span>
-  <span>{{ footer_note }}</span>
-  <a href="#top">{{ back_top }} ↑</a>
+  <div class="foot__inner">
+    <span class="ltr">© {{ year }} Yamen Agha · {{ edu_place }}</span>
+    <a href="#top">{{ back_top }} ↑</a>
+  </div>
 </footer>
-</div>
+<script src="{{ root }}assets/js/celtics-ui.js" defer></script>
 </body>
 </html>
